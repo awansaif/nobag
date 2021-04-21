@@ -4,82 +4,64 @@ namespace App\Http\Controllers;
 
 use App\Models\Buyer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class BuyerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function login_form()
     {
-        //
+        return view('buyer.auth.login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function login(Request $request)
     {
-        //
+
+        $request->validate([
+            'email' => 'required|exists:buyers,email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::guard('buyer')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->route('tourist.dashboard');
+        } else {
+            $request->session()->flash('error', 'Your passsword is incorrect. Please try again.');
+            return back();
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function register_form()
     {
-        //
+        return view('buyer.auth.register');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Buyer  $buyer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Buyer $buyer)
+    public function register(Request $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'surname'    => 'required',
+            'dob'        => 'required|date|before:today',
+            'email'      => 'required|unique:buyers,email',
+            'password'   => 'required|min:6',
+            'rule'       => 'required'
+        ], [], [
+            'dob' => 'date of birth'
+        ]);
+
+        Buyer::create([
+            'first_name' => $request->first_name,
+            'surname'    => $request->surname,
+            'dob'        => $request->dob,
+            'email'      => $request->email,
+            'password'   => Hash::make($request->password),
+        ]);
+
+        $request->session()->flash('message', 'Verification required: Please check your email for account verification,Thanks.');
+        return back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Buyer  $buyer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Buyer $buyer)
+    public function dashboard()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Buyer  $buyer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Buyer $buyer)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Buyer  $buyer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Buyer $buyer)
-    {
-        //
+        echo "cdalmlfdas";
     }
 }

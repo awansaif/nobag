@@ -41,6 +41,23 @@ return [
             'provider' => 'users',
         ],
 
+        'seller' => [
+            'driver' => 'session',
+            'provider' => 'sellers',
+        ],
+        'buyer' => [
+            'driver' => 'session',
+            'provider' => 'buyers',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'editor' => [
+            'driver' => 'session',
+            'provider' => 'editors',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -70,6 +87,22 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'seller' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Seller::class,
+        ],
+        'buyers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Buyer::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'editors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Editior::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +128,30 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'sellers' => [
+            'provider' => 'sellers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'buyers' => [
+            'provider' => 'buyers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'editors' => [
+            'provider' => 'editors',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
