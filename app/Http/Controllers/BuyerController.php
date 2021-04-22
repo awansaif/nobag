@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use App\Models\Buyer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,20 +49,28 @@ class BuyerController extends Controller
             'dob' => 'date of birth'
         ]);
 
-        Buyer::create([
+        $buyer = Buyer::create([
             'first_name' => $request->first_name,
             'surname'    => $request->surname,
             'dob'        => $request->dob,
             'email'      => $request->email,
             'password'   => Hash::make($request->password),
         ]);
-
+        $buyer->sendEmailVerificationNotification();
         $request->session()->flash('message', 'Verification required: Please check your email for account verification,Thanks.');
         return back();
     }
 
     public function dashboard()
     {
-        echo "cdalmlfdas";
+        return view('buyer.dashboard');
+    }
+
+
+    // logout
+    public function logout()
+    {
+        Auth::guard('buyer')->logout();
+        return redirect()->route('tourist.login');
     }
 }
