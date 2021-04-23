@@ -1,7 +1,7 @@
-@extends('seller.layout.buyer')
+@extends('seller.layout.seller')
 
 @section('title')
-{{ Auth::guard('seller')->user()->first_name }} -- Guide
+{{ Auth::guard('seller')->user()->first_name }} - Guide
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
                 <article class="ct-article ct-fw-600 ct-article--grey">
                     <div class="ct-article-body">
                         <div class="ct-article-title">
-                            <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Rank</h5>
+                            <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Ticket Sale</h5>
                             <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">Bronze</h4>
                         </div>
                         <ul class="ct-article-meta list-unstyled list-inline">
@@ -55,7 +55,7 @@
                 <article class="ct-article ct-fw-600 ct-article--grey">
                     <div class="ct-article-body">
                         <div class="ct-article-title">
-                            <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Visited Countires</h5>
+                            <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Total Tourist</h5>
                             <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">80</h4>
                         </div>
                         <ul class="ct-article-meta list-unstyled list-inline">
@@ -76,7 +76,7 @@
                 <article class="ct-article ct-fw-600 ct-article--grey">
                     <div class="ct-article-body">
                         <div class="ct-article-title">
-                            <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Total Cost</h5>
+                            <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Reviews</h5>
                             <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">80</h4>
                         </div>
                         <ul class="ct-article-meta list-unstyled list-inline">

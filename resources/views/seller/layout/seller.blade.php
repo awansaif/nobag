@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/motive/motive-tourist.css') }}">
+    <link rel="stylesheet" href="{{ asset('tags/css/style.css') }}">
     <!--[if lt IE 9]>
     <script src="./assets/js/html5shiv.min.js"></script>
     <script src="./assets/js/respond.min.js"></script><![endif]-->
@@ -41,6 +42,7 @@
     <script src="{{ asset('assets/js/isotope/imagesloaded.js') }}"></script>
     <script src="{{ asset('assets/js/isotope/infinitescroll.min.js') }}"></script>
     <script src="{{ asset('assets/js/isotope/init.js') }}"></script>
+    <script src="{{ asset('tags/js/script.js') }}"></script>
 </body>
 
 </html>

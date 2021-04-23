@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SellerVerified;
 use App\Models\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class SellerVerificationController extends Controller
 {
@@ -25,7 +27,7 @@ class SellerVerificationController extends Controller
         $seller->visible_password = $password;
         $seller->is_verified = 1;
         $seller->save();
-
+        Mail::to($seller->email)->send(new SellerVerified($seller));
         return back();
     }
 }

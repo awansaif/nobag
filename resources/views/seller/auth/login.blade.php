@@ -18,14 +18,29 @@
                 <div class="ct-textBox ct-u-backgroundGrey">
                     <h6 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom50">Existing Guide</h6>
                     <div class="ct-textBox-inner ct-u-marginBottom30">
-                        <form class="ct-form">
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        @if (Session::has('error'))
+                        <div class="alert alert-danger">
+                            {{ Session::get('error') }}
+                        </div>
+                        @endif
+                        <form class="ct-form" method="POST" action="{{ Route('guide.login') }}">
+                            @csrf
                             <div class="input-group text-left">
-                                <div class="input-item"><span class="ct-fw-600">Email address:</span>
-                                    <input type="email" required="" name="field[]"
-                                        class="form-control input-sm input--withBorder">
+                                <div class="input-item"><span class="ct-fw-600">Username:</span>
+                                    <input type="text" required="" name="username"
+                                        class="form-control input-sm input--withBorder" value="{{ old('username') }}">
                                 </div>
                                 <div class="input-item"><span class="ct-fw-600">Password:</span>
-                                    <input type="password" required="" name="field[]"
+                                    <input type="password" required="" name="password"
                                         class="form-control input-sm input--withBorder">
                                 </div>
                             </div>

@@ -15,6 +15,13 @@ class CreateSellerProfilesTable extends Migration
     {
         Schema::create('seller_profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('seller_id')->constrained('sellers')->onDelete('Cascade')->nullable();
+            $table->string('personal_photo')->nullable();
+            $table->mediumText('slogan')->nullable();
+            $table->text('self_description')->nullable();
+            $table->string('spoken_language', 150)->nullable();
+            $table->string('qualifiaction')->nullable();
+            $table->string('personal_video')->nullable();
             $table->timestamps();
         });
     }

@@ -27,4 +27,9 @@ class Seller extends Authenticatable
         'iban',
         'is_verified'
     ];
+
+    public function profile()
+    {
+        return $this->hasOne(SellerProfile::class);
+    }
 }

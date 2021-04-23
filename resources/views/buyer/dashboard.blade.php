@@ -1,7 +1,7 @@
 @extends('buyer.layout.buyer')
 
 @section('title')
-{{ Auth::guard('buyer')->user()->first_name }} -- Tourist
+{{ Auth::guard('buyer')->user()->first_name }} - Tourist
 @endsection
 
 @section('content')

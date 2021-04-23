@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect()->route(Route::current()->action['namespace'] . 'login');
+                return route(Route::current()->action['namespace'] . 'login');
             }
         }
 

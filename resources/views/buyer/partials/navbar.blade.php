@@ -50,16 +50,21 @@
     </ul>
 </nav>
 <div id="ct-js-wrapper" class="ct-pageWrapper">
-    <div class="ct-navbarMobile"><a href="index.html" class="navbar-brand"><img
-                src="./assets/images/content/guide-tour/logo.png" alt="Mobile Logo"></a>
+    <div class="ct-navbarMobile">
+        <a href="{{ Route('tourist.dashboard') }}" class="navbar-brand">
+            <img src="{{ asset('assets/images/content/guide-tour/logo.png') }}" alt="Mobile Logo">
+        </a>
         <button type="button" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span
                 class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
     </div>
     <div class="ct-topBar text-uppercase ct-fw-400">
         <nav class="navbar yamm text-uppercase">
             <div class="container">
-                <div class="navbar-header"><a href="index.html"><img
-                            src="{{ asset('assets/images/content/guide-tour/logo.png') }}" alt="logo"></a></div>
+                <div class="navbar-header">
+                    <a href="{{ Route('tourist.dashboard') }}">
+                        <img src="{{ asset('assets/images/content/guide-tour/logo.png') }}" alt="logo">
+                    </a>
+                </div>
                 <ul class="nav navbar-nav ct-navbar--fadeInUp pull-right">
                     <li class="dropdown"><a href="private-tours.html">private tours</a>
                         <ul class="dropdown-menu">
@@ -78,7 +83,7 @@
                     <li class="dropdown"><a href="index.html">{{ Auth::guard('buyer')->user()->first_name }}</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="onepager.html">Profile</a>
+                                <a href="{{ Route('tourist.profileForm') }}">Profile</a>
                                 <hr>
                                 <a href="{{ Route('tourist.logout') }}">Logout</a>
                             </li>

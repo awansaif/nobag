@@ -50,37 +50,53 @@
     </ul>
 </nav>
 <div id="ct-js-wrapper" class="ct-pageWrapper">
-    <div class="ct-navbarMobile"><a href="index.html" class="navbar-brand"><img
-                src="./assets/images/content/guide-tour/logo.png" alt="Mobile Logo"></a>
+    <div class="ct-navbarMobile">
+        <a href="{{ route('guide.dashboard') }}" class="navbar-brand">
+            <img src="{{ asset('assets/images/content/guide-tour/logo.png') }}" alt="Mobile Logo">
+        </a>
         <button type="button" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span
                 class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
     </div>
     <div class="ct-topBar text-uppercase ct-fw-400">
         <nav class="navbar yamm text-uppercase">
             <div class="container">
-                <div class="navbar-header"><a href="index.html"><img
-                            src="{{ asset('assets/images/content/guide-tour/logo.png') }}" alt="logo"></a></div>
+                <div class="navbar-header">
+                    <a href="{{ route('guide.dashboard') }}">
+                        <img src="{{ asset('assets/images/content/guide-tour/logo.png') }}" alt="logo">
+                    </a>
+                </div>
                 <ul class="nav navbar-nav ct-navbar--fadeInUp pull-right">
-                    <li class="dropdown"><a href="private-tours.html">private tours</a>
+                    <li class="dropdown"><a href="private-tours.html">Ticket</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <div class="yamm-content"><a href="basic-package.html">Basic Package</a><a
-                                        href="basic-package-single.html">Basic Package - single product</a><a
-                                        href="things-to-do.html">Things to do</a><a href="tours-compare.html">compare
-                                        tours</a></div>
+                                <div class="yamm-content">
+                                    <a href="basic-package.html">Ticket</a>
+                                    <a href="basic-package-single.html">New Ticket Sale</a>
+                                </div>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <i class="fas fa-cart"></i>
-                        <a href="contact.html">Cart</a>
-                    </li>
-                    <li class="dropdown"><a href="index.html">{{ Auth::guard('buyer')->user()->first_name }}</a>
+                        <a href="{{ Route('guide.blogShow') }}">Blog</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="onepager.html">Profile</a>
+                                <div class="yamm-content">
+                                    <a href="{{ Route('guide.blogShow') }}">Blogs</a>
+                                    <a href="{{ Route('guide.blogCreate') }}">New Blog</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="private-tours.html">Gallery</a>
+                    </li>
+
+                    <li class="dropdown"><a href="index.html">{{ Auth::guard('seller')->user()->first_name }}</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ Route('guide.profileForm') }}">Profile</a>
                                 <hr>
-                                <a href="{{ Route('tourist.logout') }}">Logout</a>
+                                <a href="{{ Route('guide.logout') }}">Logout</a>
                             </li>
                         </ul>
                     </li>

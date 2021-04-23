@@ -9,12 +9,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Sellers</h1>
+                <h1 class="m-0 text-dark">Guides</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ Route('admin.dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Seller</li>
+                    <li class="breadcrumb-item active">Guide</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,7 +25,6 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <a href="#" class="btn btn-success float-right">Add Product</a>
         <br>
         <br>
         @if(Session::has('message'))

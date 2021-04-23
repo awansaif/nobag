@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Seller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SellerController extends Controller
 {
@@ -15,9 +16,15 @@ class SellerController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|exists:sellers,email',
+            'username' => 'required|exists:sellers,user_name',
             'password' => 'required|min:6'
         ]);
+        if (Auth::guard('seller')->attempt(['user_name' => $request->username, 'password' => $request->password])) {
+            return redirect()->route('guide.dashboard');
+        } else {
+            $request->session()->flash('error', 'Your passsword is incorrect. Please try again.');
+            return back();
+        }
     }
 
     // show register form
@@ -66,5 +73,13 @@ class SellerController extends Controller
     public function dashboard()
     {
         return view('seller.dashboard');
+    }
+
+
+    // logout functioon
+    public function logout()
+    {
+        Auth::guard('seller')->logout();
+        return redirect()->route('guide.loginForm');
     }
 }

@@ -15,6 +15,13 @@ class CreateBuyerProfilesTable extends Migration
     {
         Schema::create('buyer_profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('buyer_id')->constrained('buyers')->onDelete('Cascade')->nullable();
+            $table->string('nickename')->nullable();
+            $table->string('personal_photo')->nullable();
+            $table->string('tongue')->nullable();
+            $table->string('passions')->nullable();
+            $table->string('short_description')->nullable();
+            $table->string('fiscal_code', 120)->nullable();
             $table->timestamps();
         });
     }

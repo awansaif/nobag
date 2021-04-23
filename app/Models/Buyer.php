@@ -19,4 +19,9 @@ class Buyer extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
     ];
+
+    public function profile()
+    {
+        return $this->hasOne(BuyerProfile::class);
+    }
 }
