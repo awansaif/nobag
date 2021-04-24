@@ -14,15 +14,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="./assets/images/favicon.ico">
     <title>@yield('title')</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/motive/motive-tourist.css') }}">
-    <link rel="stylesheet" href="{{ asset('tags/css/style.css') }}">
-    <!--[if lt IE 9]>
-    <script src="./assets/js/html5shiv.min.js"></script>
-    <script src="./assets/js/respond.min.js"></script><![endif]-->
-    <script src="{{ asset('assets/js/modernizr.custom.js') }}">
-    </script>
+
 </head>
 
 <body class="cssAnimate ct-headroom--scrollUpMenu">
@@ -33,8 +29,8 @@
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/main-compiled.js') }}"></script>
     <script src="{{ asset('assets/js/selectize.js-master/dist/js/standalone/selectize.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/light-gallery/js/lightGallery.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/main-compiled.js') }}"></script>
     <script src="{{ asset('assets/js/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('assets/js/magnific-popup/init.js') }}"></script>
@@ -42,7 +38,16 @@
     <script src="{{ asset('assets/js/isotope/imagesloaded.js') }}"></script>
     <script src="{{ asset('assets/js/isotope/infinitescroll.min.js') }}"></script>
     <script src="{{ asset('assets/js/isotope/init.js') }}"></script>
-    <script src="{{ asset('tags/js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+            tags: true,
+            theme: "classic"
+            });
+        });
+    </script>
+
 </body>
 
 </html>

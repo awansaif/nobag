@@ -76,11 +76,13 @@
                                 <h6 class="text-uppercase ct-u-colorMotive ct-fw-600 ct-u-marginBottom20">recent
                                     posts</h6>
                                 <ul class="list-unstyled text-capitalize">
-                                    <li><a href="blog-single.html">summer sang in me</a></li>
-                                    <li><a href="blog-single.html">Stonehenge aotearoa and lavender</a></li>
-                                    <li><a href="blog-single.html">the real capitol of italy</a></li>
-                                    <li><a href="blog-single.html">on the frog & toad</a></li>
-                                    <li><a href="blog-single.html">how to spend 4 days in rome</a></li>
+                                    @forelse ($articles as $article)
+                                    <li>
+                                        <a href="blog-single.html">{{ $article->title }}</a>
+                                    </li>
+                                    @empty
+
+                                    @endforelse
                                 </ul>
                             </div>
                         </div>
@@ -91,14 +93,13 @@
                                 <h6 class="text-uppercase ct-u-colorMotive ct-fw-600 ct-u-marginBottom30">tags
                                 </h6>
                                 <ul class="list-inline list-unstyled text-capitalize">
-                                    <li><a href="blog-single.html">summer</a></li>
-                                    <li><a href="blog-single.html">offers</a></li>
-                                    <li><a href="blog-single.html">vacation</a></li>
-                                    <li><a href="blog-single.html">hot</a></li>
-                                    <li><a href="blog-single.html">voucher</a></li>
-                                    <li><a href="blog-single.html">travel</a></li>
-                                    <li><a href="blog-single.html">rome</a></li>
-                                    <li><a href="blog-single.html">colosseum</a></li>
+                                    @forelse ($categories as $category)
+                                    <li>
+                                        <a href="blog-single.html">{{ $category->category }}</a>
+                                    </li>
+                                    @empty
+
+                                    @endforelse
                                 </ul>
                             </div>
                         </div>

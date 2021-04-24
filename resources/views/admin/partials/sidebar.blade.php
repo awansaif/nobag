@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ env('APP_URL') }}" class="brand-link">
+    <a href="{{ route('admin.dashboard') }}" class="brand-link">
         <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Admin</span>
@@ -28,6 +28,14 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             {{-- active --}}
+                            <a href="{{ Route('admin.editor.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.editor.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Editor</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            {{-- active --}}
                             <a href="{{ Route('admin.sellers') }}"
                                 class="nav-link {{ Route::currentRouteName() == 'admin.sellers' ? 'active' : ''  }}">
                                 <i class="far fa-circle nav-icon"></i>
@@ -35,13 +43,14 @@
                             </a>
                         </li>
 
+
                         <li class="nav-item">
                             {{-- active --}}
-                            {{-- <a href="{{ Route('user.index') }}"
-                            class="nav-link {{ Route::currentRouteName() == 'user.index' ? 'active' : ''  }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>User</p>
-                            </a> --}}
+                            <a href="{{ Route('admin.tourists') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.tourists' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tourists</p>
+                            </a>
                         </li>
 
                         <li class="nav-item">

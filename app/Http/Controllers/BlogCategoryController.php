@@ -14,7 +14,9 @@ class BlogCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('editor.pages.blog-category.index', [
+            'categories' => BlogCategory::orderBy('id', 'DESC')->get()
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class BlogCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('editor.pages.blog-category.create');
     }
 
     /**
@@ -35,7 +37,16 @@ class BlogCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category' => 'required|unique:blog_categories,category'
+        ]);
+
+        BlogCategory::create([
+            'category' => $request->category
+        ]);
+
+        $request->session()->flash('message', 'Blog Category add successfully');
+        return back();
     }
 
     /**
@@ -57,7 +68,9 @@ class BlogCategoryController extends Controller
      */
     public function edit(BlogCategory $blogCategory)
     {
-        //
+        return view('editor.pages.blog-category.update', [
+            'category' => $blogCategory
+        ]);
     }
 
     /**
@@ -69,7 +82,15 @@ class BlogCategoryController extends Controller
      */
     public function update(Request $request, BlogCategory $blogCategory)
     {
-        //
+        $request->validate([
+            'category' => 'required|unique:blog_categories,category,' . $blogCategory->id
+        ]);
+
+        $blogCategory->category =  $request->category;
+        $blogCategory->save();
+
+        $request->session()->flash('message', 'Blog Category updated successfully');
+        return back();
     }
 
     /**

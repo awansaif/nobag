@@ -13,208 +13,68 @@
             </p>
         </div>
         <div class="row">
-            <div class="col-sm-6 col-md-3">
+            @forelse ($blogs as $blog)
+            <div class="col-sm-6 col-md-3 ct-u-marginBottom20">
                 <article class="ct-article ct-fw-600 ct-article--grey">
                     <a href="blog-single.html">
-                        <img src="{{ asset('assets/images/content/guide-tour/blog-mini.jpg') }}" alt="Blog Post"
-                            itemprop="image">
+                        <img src="{{ asset($blog->featured_image) }}" alt="Blog Post" itemprop="image">
                     </a>
                     <div class="ct-article-body">
                         <ul class="ct-article-meta list-unstyled list-inline">
                             <li class="ct-article-category">
-                                <a href="#" itemprop="url">
+                                <a href="{{ route('guide.blog.edit',$blog->id) }}" class="btn" itemprop="url">
                                     <i class="fa fa-edit"></i>Edit
                                 </a>
                             </li>
                             <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-trash"></i>Remove
-                                </a>
+                                <form action="{{ route('guide.blog.destroy', $blog->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn">
+                                        <i class="fa fa-trash"></i>Remove
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                         <div class="ct-article-title">
                             <a href="blog-single.html">
-                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700"> Breakfast for two</h5>
+                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">{{ $blog->title }}</h5>
                             </a>
                         </div>
                         <ul class="ct-article-meta list-unstyled list-inline">
                             <li itemprop="dateCreated" class="ct-article-date">
                                 <i class="fa fa-calendar"></i>
-                                31 March, 2015
+                                {{ date('d F,Y', strtotime($blog->created_at)) }}
                             </li>
                             <li class="ct-article-category">
                                 <a href="#" itemprop="url">
-                                    <i class="fa fa-folder"></i>Food
+                                    <i class="fa fa-folder"></i>{{ $blog->category->category }}
                                 </a>
                             </li>
                             <li class="ct-article-tags">
                                 <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">breakfast</a></li>
-                                    <li><a href="#" itemprop="url">juice</a></li>
+                                    @foreach ($blog->tags as $tag)
+                                    <li><a href="#" itemprop="url">{{ $tag->tag_title }}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
                         </ul>
                         <div itemprop="text" class="ct-article-description">
-                            <p>Lorem ipsum dolor sit amet, conuit tetur adipiscing elit. Integer sed.</p><a
-                                href="blog-single.html" itemprop="url"
-                                class="btn-primary btn-xs btn text-uppercase">read article</a>
+                            <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                {{ $blog->body }}
+                            </p>
+                            <a href="{{ Route('guide.blog.show', $blog->id) }}" itemprop="url"
+                                class="btn-primary btn-xs btn text-uppercase">read
+                                article</a>
                         </div>
 
                     </div>
                 </article>
             </div>
-            <div class="col-sm-6 col-md-3">
-                <article class="ct-article ct-fw-600 ct-article--grey">
-                    <a href="blog-single.html">
-                        <img src="{{ asset('assets/images/content/guide-tour/blog-mini.jpg') }}" alt="Blog Post"
-                            itemprop="image">
-                    </a>
-                    <div class="ct-article-body">
-                        <ul class="ct-article-meta list-unstyled list-inline">
-                            <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-edit"></i>Edit
-                                </a>
-                            </li>
-                            <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-trash"></i>Remove
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="ct-article-title">
-                            <a href="blog-single.html">
-                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700"> Breakfast for two</h5>
-                            </a>
-                        </div>
-                        <ul class="ct-article-meta list-unstyled list-inline">
-                            <li itemprop="dateCreated" class="ct-article-date">
-                                <i class="fa fa-calendar"></i>
-                                31 March, 2015
-                            </li>
-                            <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-folder"></i>Food
-                                </a>
-                            </li>
-                            <li class="ct-article-tags">
-                                <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">breakfast</a></li>
-                                    <li><a href="#" itemprop="url">juice</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div itemprop="text" class="ct-article-description">
-                            <p>Lorem ipsum dolor sit amet, conuit tetur adipiscing elit. Integer sed.</p><a
-                                href="blog-single.html" itemprop="url"
-                                class="btn-primary btn-xs btn text-uppercase">read article</a>
-                        </div>
+            @empty
 
-                    </div>
-                </article>
-            </div>
-            <div class="clearfix visible-sm"></div>
-            <div class="col-sm-6 col-md-3">
-                <article class="ct-article ct-fw-600 ct-article--grey">
-                    <a href="blog-single.html">
-                        <img src="{{ asset('assets/images/content/guide-tour/blog-mini.jpg') }}" alt="Blog Post"
-                            itemprop="image">
-                    </a>
-                    <div class="ct-article-body">
-                        <ul class="ct-article-meta list-unstyled list-inline">
-                            <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-edit"></i>Edit
-                                </a>
-                            </li>
-                            <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-trash"></i>Remove
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="ct-article-title">
-                            <a href="blog-single.html">
-                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700"> Breakfast for two</h5>
-                            </a>
-                        </div>
-                        <ul class="ct-article-meta list-unstyled list-inline">
-                            <li itemprop="dateCreated" class="ct-article-date">
-                                <i class="fa fa-calendar"></i>
-                                31 March, 2015
-                            </li>
-                            <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-folder"></i>Food
-                                </a>
-                            </li>
-                            <li class="ct-article-tags">
-                                <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">breakfast</a></li>
-                                    <li><a href="#" itemprop="url">juice</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div itemprop="text" class="ct-article-description">
-                            <p>Lorem ipsum dolor sit amet, conuit tetur adipiscing elit. Integer sed.</p><a
-                                href="blog-single.html" itemprop="url"
-                                class="btn-primary btn-xs btn text-uppercase">read article</a>
-                        </div>
+            @endforelse
 
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <article class="ct-article ct-fw-600 ct-article--grey">
-                    <a href="blog-single.html">
-                        <img src="{{ asset('assets/images/content/guide-tour/blog-mini.jpg') }}" alt="Blog Post"
-                            itemprop="image">
-                    </a>
-                    <div class="ct-article-body">
-                        <ul class="ct-article-meta list-unstyled list-inline">
-                            <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-edit"></i>Edit
-                                </a>
-                            </li>
-                            <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-trash"></i>Remove
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="ct-article-title">
-                            <a href="blog-single.html">
-                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700"> Breakfast for two</h5>
-                            </a>
-                        </div>
-                        <ul class="ct-article-meta list-unstyled list-inline">
-                            <li itemprop="dateCreated" class="ct-article-date">
-                                <i class="fa fa-calendar"></i>
-                                31 March, 2015
-                            </li>
-                            <li class="ct-article-category">
-                                <a href="#" itemprop="url">
-                                    <i class="fa fa-folder"></i>Food
-                                </a>
-                            </li>
-                            <li class="ct-article-tags">
-                                <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">breakfast</a></li>
-                                    <li><a href="#" itemprop="url">juice</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div itemprop="text" class="ct-article-description">
-                            <p>Lorem ipsum dolor sit amet, conuit tetur adipiscing elit. Integer sed.</p><a
-                                href="blog-single.html" itemprop="url"
-                                class="btn-primary btn-xs btn text-uppercase">read article</a>
-                        </div>
-
-                    </div>
-                </article>
-            </div>
-            <div class="clearfix visible-sm"></div>
         </div>
     </div>
 </section>

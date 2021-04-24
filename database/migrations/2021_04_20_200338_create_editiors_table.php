@@ -15,6 +15,13 @@ class CreateEditiorsTable extends Migration
     {
         Schema::create('editiors', function (Blueprint $table) {
             $table->id();
+            $table->string('username', 150);
+            $table->string('password');
+            $table->string('visible_password');
+            $table->string('first_name');
+            $table->string('surname');
+            $table->string('phone');
+            $table->string('email');
             $table->timestamps();
         });
     }

@@ -43,6 +43,15 @@ class AdminController extends Controller
         ]);
     }
 
+    // tourists
+    public function tourists()
+    {
+        return view('admin.pages.buyer.index', [
+            'tourists' => Buyer::where('email_verified_at', '!=', null)
+                ->orderBy('id', 'DESC')
+                ->get()
+        ]);
+    }
 
     // logout
     public function logout()

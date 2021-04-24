@@ -9,4 +9,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Editior extends Authenticatable
 {
     use HasFactory;
+
+    protected $fillable = [
+        'username',
+        'password',
+        'visible_password',
+        'first_name',
+        'surname',
+        'phone',
+        'email'
+    ];
 }

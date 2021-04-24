@@ -23,8 +23,14 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return route(Route::current()->action['namespace'] . 'login');
+            if ($guard == 'seller') {
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('guide.dashboard');
+                }
+            } else {
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route($guard . '.' . 'dashboard');
+                }
             }
         }
 

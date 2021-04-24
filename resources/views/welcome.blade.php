@@ -797,131 +797,56 @@
         </div>
     </div>
 </section>
-<section itemscope itemtype="http://schema.org/Blog" class="ct-u-paddingBoth80 ct-blog">
+<section class="ct-u-paddingBoth80 ct-blog">
     <div class="container">
         <div class="ct-heading--withBorder ct-heading--withBorderGrey ct-u-marginBottom40">
-            <h4 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10">latest news</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed arcu ac ligula volutpat
-                tincidunt vel ut mauris. Fusce nec ultrices leo.</p>
+            <h4 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10">latest Articles</h4>
+            <p>Here comes text which you want.</p>
         </div>
         <div class="row">
+            @foreach ($articles as $article)
             <div class="col-sm-6 col-md-3">
-                <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting"
-                    class="ct-article ct-fw-600 ct-article--grey"><a href="blog-single.html" itemprop="url"><img
-                            src="./assets/images/content/guide-tour/blog-mini.jpg" alt="Blog Post" itemprop="image"></a>
+                <article class="ct-article ct-fw-600 ct-article--grey">
+                    <a href="blog-single.html" itemprop="url">
+                        <img src="{{ asset($article->featured_image) }}" alt="Blog Post" itemprop="image" width="100%"
+                            height="200px"></a>
                     <div class="ct-article-body">
-                        <div class="ct-article-title"><a href="blog-single.html" itemprop="url">
-                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700"> Breakfast for two</h5>
-                            </a></div>
+                        <div class="ct-article-title">
+                            <a href="blog-single.html">
+                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">{{ $article->title }}</h5>
+                            </a>
+                        </div>
                         <ul class="ct-article-meta list-unstyled list-inline">
-                            <li itemprop="dateCreated" class="ct-article-date"><i class="fa fa-calendar"></i>31
-                                March, 2015</li>
-                            <li class="ct-article-category"><a href="#" itemprop="url"><i
-                                        class="fa fa-folder"></i>Food</a></li>
+                            <li itemprop="dateCreated" class="ct-article-date">
+                                <i class="fa fa-calendar"></i>
+                                {{ date('d F,Y', strtotime($article->created_at)) }}
+                            </li>
+                            <li class="ct-article-category">
+                                <a href="#">
+                                    <i class="fa fa-folder"></i>{{ $article->category->category }}
+                                </a>
+                            </li>
                             <li class="ct-article-tags">
                                 <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">breakfast</a></li>
-                                    <li><a href="#" itemprop="url">juice</a></li>
+                                    @forelse ($article->tags as $tag)
+                                    <li>
+                                        <a href="#">{{ $tag->tag_title }}</a>
+                                    </li>
+                                    @empty
+
+                                    @endforelse
                                 </ul>
                             </li>
                         </ul>
-                        <div itemprop="text" class="ct-article-description">
-                            <p>Lorem ipsum dolor sit amet, conuit tetur adipiscing elit. Integer sed.</p><a
-                                href="blog-single.html" itemprop="url"
-                                class="btn-primary btn-xs btn text-uppercase">read article</a>
+                        <div class="ct-article-description">
+                            <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                {{ $article->body }}</p>
+                            <a href="blog-single.html" class="btn-primary btn-xs btn text-uppercase">read article</a>
                         </div>
                     </div>
                 </article>
             </div>
-            <div class="col-sm-6 col-md-3">
-                <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting"
-                    class="ct-article ct-fw-600 ct-article--grey"><a href="blog-single.html" itemprop="url"><img
-                            src="./assets/images/content/guide-tour/blog-mini2.jpg" alt="Blog Post"
-                            itemprop="image"></a>
-                    <div class="ct-article-body">
-                        <div class="ct-article-title"><a href="blog-single.html" itemprop="url">
-                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700"> awesome splash park</h5>
-                            </a></div>
-                        <ul class="ct-article-meta list-unstyled list-inline">
-                            <li itemprop="dateCreated" class="ct-article-date"><i class="fa fa-calendar"></i>30
-                                March, 2015</li>
-                            <li class="ct-article-category"><a href="#" itemprop="url"><i
-                                        class="fa fa-folder"></i>Fun</a></li>
-                            <li class="ct-article-tags">
-                                <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">trampoline</a></li>
-                                    <li><a href="#" itemprop="url">park</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div itemprop="text" class="ct-article-description">
-                            <p>Lorem ipsum dolor sit amet, conuit tetur adipiscing elit. Integer sed.</p><a
-                                href="blog-single.html" itemprop="url"
-                                class="btn-primary btn-xs btn text-uppercase">read article</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="clearfix visible-sm"></div>
-            <div class="col-sm-6 col-md-3">
-                <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting"
-                    class="ct-article ct-fw-600 ct-article--grey"><a href="blog-single.html" itemprop="url"><img
-                            src="./assets/images/content/guide-tour/blog-mini3.jpg" alt="Blog Post"
-                            itemprop="image"></a>
-                    <div class="ct-article-body">
-                        <div class="ct-article-title"><a href="blog-single.html" itemprop="url">
-                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700"> traditional dance</h5>
-                            </a></div>
-                        <ul class="ct-article-meta list-unstyled list-inline">
-                            <li itemprop="dateCreated" class="ct-article-date"><i class="fa fa-calendar"></i>29
-                                March, 2015</li>
-                            <li class="ct-article-category"><a href="#" itemprop="url"><i
-                                        class="fa fa-folder"></i>Tradition</a></li>
-                            <li class="ct-article-tags">
-                                <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">dance</a></li>
-                                    <li><a href="#" itemprop="url">fun</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div itemprop="text" class="ct-article-description">
-                            <p>Lorem ipsum dolor sit amet, conuit tetur adipiscing elit. Integer sed.</p><a
-                                href="blog-single.html" itemprop="url"
-                                class="btn-primary btn-xs btn text-uppercase">read article</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting"
-                    class="ct-article ct-fw-600 ct-article--grey"><a href="blog-single.html" itemprop="url"><img
-                            src="./assets/images/content/guide-tour/blog-mini4.jpg" alt="Blog Post"
-                            itemprop="image"></a>
-                    <div class="ct-article-body">
-                        <div class="ct-article-title"><a href="blog-single.html" itemprop="url">
-                                <h5 class="text-uppercase ct-u-colorMotive ct-fw-700"> pisa tower day</h5>
-                            </a></div>
-                        <ul class="ct-article-meta list-unstyled list-inline">
-                            <li itemprop="dateCreated" class="ct-article-date"><i class="fa fa-calendar"></i>28
-                                March, 2015</li>
-                            <li class="ct-article-category"><a href="#" itemprop="url"><i
-                                        class="fa fa-folder"></i>Pisa</a></li>
-                            <li class="ct-article-tags">
-                                <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">tower</a></li>
-                                    <li><a href="#" itemprop="url">sight</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div itemprop="text" class="ct-article-description">
-                            <p>Lorem ipsum dolor sit amet, conuit tetur adipiscing elit. Integer sed.</p><a
-                                href="blog-single.html" itemprop="url"
-                                class="btn-primary btn-xs btn text-uppercase">read article</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="clearfix visible-sm"></div>
+            @endforeach
         </div>
     </div>
 </section>

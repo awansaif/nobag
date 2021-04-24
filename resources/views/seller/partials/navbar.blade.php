@@ -77,12 +77,12 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="{{ Route('guide.blogShow') }}">Blog</a>
+                        <a href="{{ Route('guide.blog.index') }}">Blog</a>
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
-                                    <a href="{{ Route('guide.blogShow') }}">Blogs</a>
-                                    <a href="{{ Route('guide.blogCreate') }}">New Blog</a>
+                                    <a href="{{ Route('guide.blog.index') }}">Blogs</a>
+                                    <a href="{{ Route('guide.blog.create') }}">New Blog</a>
                                 </div>
                             </li>
                         </ul>

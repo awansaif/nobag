@@ -21,8 +21,8 @@ class SellerVerificationController extends Controller
     public function verification($id)
     {
         $seller = Seller::findorFail($id);
-        $password = $seller->surname . uniqid();
-        $seller->user_name = $seller->first_name .  uniqid();
+        $password = $seller->surname[0] . uniqid();
+        $seller->user_name = $seller->first_name[0] .  uniqid();
         $seller->password =  Hash::make($password);
         $seller->visible_password = $password;
         $seller->is_verified = 1;

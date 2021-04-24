@@ -1,20 +1,24 @@
 <?php
 
+use App\Http\Controllers\Admin\AddEditorController;
 use App\Http\Controllers\Admin\SellerVerificationController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogCategoryController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\BuyerProfileController;
+use App\Http\Controllers\EditiorController;
 use App\Http\Controllers\SellerBlogController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SellerProfileController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::get('/blogs', [WelcomeController::class, 'blogs'])->name('blogs');
+Route::get('/about-us', [WelcomeController::class, 'about_us'])->name('about-us');
+Route::get('/contact-us', [WelcomeController::class, 'contact_us'])->name('contact-us');
 
 
 Route::get('/email/verify', function () {
@@ -36,10 +40,10 @@ Route::post('/email/verification-notification', function (Request $request) {
 // guide routes
 Route::prefix('guide')
     ->name('guide.')
-    ->namespace('guide.')
     ->group(function () {
         Route::middleware(['guest:seller'])->group(function () {
             // login route
+            Route::get('/', [SellerController::class, 'login_form'])->name('loginForm');
             Route::get('login', [SellerController::class, 'login_form'])->name('loginForm');
             Route::post('login', [SellerController::class, 'login'])->name('login');
 
@@ -56,8 +60,7 @@ Route::prefix('guide')
             Route::post('profile/{id}', [SellerProfileController::class, 'store'])->name('profile');
 
             // blog
-            Route::get('blog', [SellerBlogController::class, 'index'])->name('blogShow');
-            Route::get('blog/create', [SellerBlogController::class, 'create'])->name('blogCreate');
+            Route::Resource('blog', SellerBlogController::class);
             Route::post(
                 'blog/store',
                 [SellerBlogController::class, 'store']
@@ -80,6 +83,7 @@ Route::prefix('tourist')
     ->group(function () {
         Route::middleware(['checkguest'])->group(function () {
             // login route
+            Route::get('/', [BuyerController::class, 'login_form'])->name('loginForm');
             Route::get('login', [BuyerController::class, 'login_form'])->name('loginForm');
             Route::post('login', [BuyerController::class, 'login'])->name('login');
 
@@ -106,16 +110,23 @@ Route::prefix('tourist')
 // admin routes
 Route::prefix('admin')
     ->name('admin.')
-    ->namespace('admin.')
     ->group(function () {
-        Route::middleware(['guest'])->group(function () {
+        Route::middleware(['guest:admin'])->group(function () {
             // login route
+            Route::get('/', [AdminController::class, 'login_form'])->name('loginForm');
             Route::get('login', [AdminController::class, 'login_form'])->name('loginForm');
             Route::post('login', [AdminController::class, 'login'])->name('login');
         });
         Route::middleware(['auth:admin'])->group(function () {
             // dashboard
             Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+            // editors
+            Route::resource('editors', AddEditorController::class, ['names' => 'editor']);
+
+            // tourists
+            Route::get('tourists', [AdminController::class, 'tourists'])->name('tourists');
+
 
             // Show sellers
             Route::get('sellers', [SellerVerificationController::class, 'sellers'])->name('sellers');
@@ -127,5 +138,49 @@ Route::prefix('admin')
 
             // logout
             Route::get('logout', [AdminController::class, 'logout'])->name('logout');
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+// editor routes
+Route::prefix('editor')
+    ->name('editor.')
+    ->group(function () {
+        Route::middleware(['guest:editor'])->group(function () {
+            // login route
+            Route::get('/', [EditiorController::class, 'login_form'])->name('loginForm');
+            Route::get('login', [EditiorController::class, 'login_form'])->name('loginForm');
+            Route::post('login', [EditiorController::class, 'login'])->name('login');
+        });
+        Route::middleware(['auth:editor'])->group(function () {
+            // dashboard
+            Route::get('dashboard', [EditiorController::class, 'dashboard'])->name('dashboard');
+
+            // Show guide and verification
+            Route::get('guides', [EditiorController::class, 'guides'])->name('guides');
+            Route::get('guides/verify/{id}', [EditiorController::class, 'verification'])->name('guideVerification');
+
+            // tourist list
+            Route::get('tourists', [EditiorController::class, 'tourists'])->name('tourists');
+
+            // blog categories add
+            Route::resource('blog-categories', BlogCategoryController::class, [
+                'names' => 'blogCategory'
+            ]);
+
+            // Profile Page
+            // Route::get('profile', [])
+
+            // logout
+            Route::get('logout', [EditiorController::class, 'logout'])->name('logout');
         });
     });

@@ -22,13 +22,6 @@ class CreateSellerBlogsTable extends Migration
             $table->string('featured_image');
             $table->timestamps();
         });
-
-        Schema::create('seller_blogs_tags', function (Blueprint $table) {
-            $table->id();
-            $table->string('seller_blog_id');
-            $table->string('tag_title');
-            $table->timestamps();
-        });
     }
 
     /**
@@ -39,6 +32,5 @@ class CreateSellerBlogsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('seller_blogs');
-        Schema::dropIfExists('seller_blogs_tags');
     }
 }
