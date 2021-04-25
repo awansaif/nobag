@@ -18,6 +18,7 @@ class Buyer extends Authenticatable implements MustVerifyEmail
         'dob',
         'email',
         'password',
+        'email_verified_at'
     ];
 
     public function profile()

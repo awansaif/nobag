@@ -9,7 +9,7 @@
     <div class="container">
         <div class="ct-heading--withBorder ct-heading--withBorderGrey ct-u-marginBottom40">
             <h4 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10">My Blogs</h4>
-            <p>{{ $profile->self_description? $profile->self_description : 'Please add your self desription from your profile page' }}
+            <p>{{ $profile ? $profile->self_description : 'Please add your self desription from your profile page' }}
             </p>
         </div>
         <div class="row">
@@ -72,7 +72,7 @@
                 </article>
             </div>
             @empty
-
+            <h2>No blog uploaded yet.</h2>
             @endforelse
 
         </div>
