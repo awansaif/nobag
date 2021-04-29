@@ -22,8 +22,7 @@
         <!-- Sidebar Menu -->
         <nav class=" mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                <span class="text-muted">MEMEBERS</span>
                 <li class="nav-item has-treeview menu-open">
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -53,15 +52,48 @@
                             </a>
                         </li>
 
+                        {{--  --}}
+                        <span class="text-muted">PUBLIC</span>
                         <li class="nav-item">
                             {{-- active --}}
-                            <a href="{{ Route('admin.logout') }}" class="nav-link">
-                                <i class="fas fa-sign-out-alt nav-icon"></i>
-                                <p>Logout</p>
+                            <a href="{{ Route('admin.messages') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.messages' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Messages</p>
+                                <span class="badge badge-success">
+                                    {{ App\Models\ContactUs::where('is_read',0)->count() }}
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ Route('admin.profile.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.profile.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Profile</p>
+                            </a>
+                        </li>
+
+                        <span class="text-muted">TEAM</span>
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ Route('admin.team.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.team.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Team</p>
                             </a>
                         </li>
                     </ul>
-
+                </li>
+            </ul>
+            <ul class="nav nav-pills nav-sidebar flex-column" style="position: absolute; bottom:10px;">
+                <li class="nav-item mt-auto">
+                    {{-- active --}}
+                    <a href="{{ Route('admin.logout') }}" class="nav-link">
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <p>Logout</p>
+                    </a>
                 </li>
             </ul>
         </nav>

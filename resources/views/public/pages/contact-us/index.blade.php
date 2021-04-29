@@ -31,16 +31,24 @@
                         <li><span class="ct-list-iconContainer"><i class="fa fa-map-marker"></i></span>
                             <h6 class="ct-u-marginBottom10">Address</h6>
                             <p>
-                                Con Brio Boulevard, Upper C.
-                                QLD 4209, Australia
+                                {{ App\Models\SiteProfile::pluck('address')->first() }}
                             </p>
                         </li>
-                        <li><span class="ct-list-iconContainer"><i class="fa fa-phone"></i></span>
+                        <li>
+                            <span class="ct-list-iconContainer">
+                                <i class="fa fa-phone"></i>
+                            </span>
                             <h6 class="ct-u-marginBottom10">Phone</h6>
-                            <p>(012) 345-6789</p>
+                            <p>{{ App\Models\SiteProfile::pluck('phone')->first() }}</p>
                         </li>
-                        <li><span class="ct-list-iconContainer"><i class="fa fa-envelope"></i></span>
-                            <h6 class="ct-u-marginBottom10">Email</h6><a href="#">tickets&tours@info.com</a>
+                        <li>
+                            <span class="ct-list-iconContainer">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <h6 class="ct-u-marginBottom10">Email</h6>
+                            <a href="mailto:{{ App\Models\SiteProfile::pluck('email')->first() }}">
+                                {{ App\Models\SiteProfile::pluck('email')->first() }}
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -55,24 +63,36 @@
                     <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span
                             aria-hidden="true">�</span></button><strong>Danger!</strong>You did something wrong
                 </div>
-                <form action="./assets/form/send.php" method="POST"
-                    class="validateIt ct-u-marginBottom30 ct-form ct-form-grey">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                @if (Session::has('message'))
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
+                @endif
+                <form action="{{ Route('contact-us.store') }}" method="POST"
+                    class="ct-u-marginBottom30 ct-form ct-form-grey">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <input id="contact_name" data-error-message="Name" placeholder="Name" type="text"
-                                required="" name="field[]"
+                            <input placeholder="Name" type="text" name="name"
                                 class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive">
                             <label for="contact_name" class="sr-only"></label>
                         </div>
                         <div class="col-md-6">
-                            <input id="contact_email" data-error-message="Email" placeholder="Email" type="email"
-                                required="" name="field[]"
+                            <input placeholder="Email" type="email" name="email"
                                 class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive">
                             <label for="contact_email" class="sr-only"></label>
                         </div>
                     </div>
-                    <textarea id="contact_message" data-error-message="Message is required" placeholder="Message"
-                        rows="8" required="" name="field[]" title="Message"
+                    <textarea id="contact_message" placeholder="Message" rows="8" name="message" title="Message"
                         class="form-control input--withBorder ct-u-marginBottom20 input-focusMotive ct-u-marginBottom20"></textarea>
                     <button class="btn btn-primary btn-lg text-uppercase">send message</button>
                 </form>

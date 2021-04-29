@@ -209,72 +209,27 @@
         </div>
     </div>
 </section>
-<section class="ct-u-paddingBoth80">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="col-sm-4">
-                    <div class="ct-iconBox ct-u-marginBottom20"><a href="rewards.html">
-                            <div class="ct-iconBox-icon"><i class="fa fa-eye"></i>
-                            </div>
-                            <div class="ct-iconBox-description">
-                                <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">see
-                                    &amp; do</h5>
-                                <p>Explore the perfect combination of city buzz &amp; peaceful nature</p>
-                            </div>
-                        </a></div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="ct-iconBox ct-u-marginBottom20"><a href="rewards.html">
-                            <div class="ct-iconBox-icon"><i class="fa fa-cutlery"></i>
-                            </div>
-                            <div class="ct-iconBox-description">
-                                <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">eat
-                                    &amp; drink</h5>
-                                <p>Tasty sea food, modern and crispy gastronomy &amp; lovely drinks</p>
-                            </div>
-                        </a></div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="ct-iconBox ct-u-marginBottom20"><a href="rewards.html">
-                            <div class="ct-iconBox-icon"><i class="fa fa-bed"></i>
-                            </div>
-                            <div class="ct-iconBox-description">
-                                <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">night
-                                    stay</h5>
-                                <p>Accommodation and deals for every occasion &amp; budget</p>
-                            </div>
-                        </a></div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-sm-4">
-                    <div class="ct-popularPages text-center">
-                        <h6 class="ct-popularPages-title text-uppercase ct-u-marginBottom20 ct-fw-700">popular
-                            pages</h6><a href="blog-single.html" class="ct-u-marginBottom20">Day Trips & Excurs,
-                            Private and Custom Tours & Much More</a><a href="blog.html"
-                            class="btn btn-primary btn-xs text-uppercase">See more</a>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="ct-popularPages text-center">
-                        <h6 class="ct-popularPages-title text-uppercase ct-u-marginBottom20 ct-fw-700">popular
-                            pages</h6><a href="blog-single.html" class="ct-u-marginBottom20">Multi-Day &
-                            Extended Tours, Cultural & Themed Tour</a><a href="blog.html"
-                            class="btn btn-primary btn-xs text-uppercase">See more</a>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="ct-popularPages text-center">
-                        <h6 class="ct-popularPages-title text-uppercase ct-u-marginBottom20 ct-fw-700">popular
-                            pages</h6><a href="blog-single.html" class="ct-u-marginBottom20">Walking & Biking
-                            Tours, Sightseeing & Trips Passes</a><a href="blog.html"
-                            class="btn btn-primary btn-xs text-uppercase">See more</a>
-                    </div>
-                </div>
-            </div>
+<section>
+    <div style="position: relative;">
+        <img src="{{ asset('assets/images/content/guide-tour/slider-tabImage.jpg') }}" alt="" width="100%">
+        <div style="position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);">
+            <h1 class="text-center" style="color: #ffff">Nobag</h1>
+            <p style="color: #ffffff; margin-top:20px; text-align: center;">
+                {{ App\Models\SiteProfile::pluck('description')->first() }}
+            </p>
+            <a href="{{ Route('about-us') }}" class="btn btn-primary"
+                style="margin-top: 20px; display:block; text-align:center;">
+                {{ __('More About us') }}
+            </a>
+
         </div>
     </div>
 </section>
+
+
 <section class="ct-u-paddingBottom250">
     <div class="container">
         <div class="row">
@@ -711,6 +666,8 @@
         </div>
     </div>
 </section>
+
+
 <section class="ct-u-decoration--triangleBefore ct-u-backgroundMotive ct-u-colorWhite">
     <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true"
         data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1"
@@ -841,7 +798,8 @@
                         <div class="ct-article-description">
                             <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
                                 {{ $article->body }}</p>
-                            <a href="blog-single.html" class="btn-primary btn-xs btn text-uppercase">read article</a>
+                            <a href="{{ Route('singleBlog',$article->id) }}"
+                                class="btn-primary btn-xs btn text-uppercase">read article</a>
                         </div>
                     </div>
                 </article>
@@ -966,44 +924,6 @@
                 </figcaption>
             </figure>
         </article>
-    </div>
-</section>
-<section class="ct-u-backgroundMotive ct-u-colorWhite ct-u-paddingTop70 ct-u-overflowHidden">
-    <div class="container ct-u-relative">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-lg-offset-0 col-lg-7 ct-u-z-index4">
-                <h4 class="text-uppercase">newsletter subscription</h4>
-                <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
-                <p class="ct-u-marginBottom20">Sign up to our newsletter to recive directly on your email our
-                    news & latest offers:</p>
-                <div role="alert" class="successMessage alert alert-success alert-dismissible">
-                    <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span
-                            aria-hidden="true">�</span></button><strong>Success!</strong>Congratulation, mission
-                    success
-                </div>
-                <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
-                    <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span
-                            aria-hidden="true">�</span></button><strong>Danger!</strong>You did something wrong
-                </div>
-                <form action="./assets/form/send.php" method="POST" class="validateIt ct-u-marginBottom30">
-                    <div class="input-group input--withIcon"><span class="input-icon"><i
-                                class="fa fa-envelope"></i></span>
-                        <input type="email" required="" name="field[]" class="form-control input-lg"><span
-                            class="input-group-btn">
-                            <button class="btn btn-default btn-transparent text-uppercase">Subscribe</button></span>
-                    </div>
-                </form>
-                <ul class="list-unstyled ct-list--circleWithIcons ct-u-marginBottom60">
-                    <li><span class="ct-list-iconContainer"><i class="fa fa-usd"></i></span>Go into the monthly
-                        draw to win a $500 travel voucher when signing up with us.</li>
-                    <li><span class="ct-list-iconContainer"><i class="fa fa-gift"></i></span>A special present
-                        from us on your birthday.</li>
-                    <li><span class="ct-list-iconContainer"><i class="fa fa-unlock-alt"></i></span>Access to all
-                        the best competitions as they launch.</li>
-                </ul>
-            </div>
-        </div><img src="{{ asset('assets/images/content/guide-tour/subscribe-image.png') }}" data-bottom="0"
-            data-right="-210" alt="sub image" class="ct-js-imageOffset ct-u-z-index3">
     </div>
 </section>
 @endsection

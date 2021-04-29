@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AddEditorController;
 use App\Http\Controllers\Admin\SellerVerificationController;
+use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogCategoryController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -9,16 +10,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\BuyerProfileController;
 use App\Http\Controllers\EditiorController;
+use App\Http\Controllers\Page\ContactUs;
+use App\Http\Controllers\Page\ContactUsController;
 use App\Http\Controllers\SellerBlogController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SellerProfileController;
+use App\Http\Controllers\SiteProfileController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+// blogs
 Route::get('/blogs', [WelcomeController::class, 'blogs'])->name('blogs');
+Route::get('/single-blog/{id}', [WelcomeController::class, 'single_blog'])->name('singleBlog');
+
+
 Route::get('/about-us', [WelcomeController::class, 'about_us'])->name('about-us');
-Route::get('/contact-us', [WelcomeController::class, 'contact_us'])->name('contact-us');
+// contact us page
+Route::resource('contact-us', ContactUsController::class);
 
 
 Route::get('/email/verify', function () {
@@ -133,8 +142,14 @@ Route::prefix('admin')
             // verify seller
             Route::get('selller/verify/{id}', [SellerVerificationController::class, 'verification'])->name('sellerVerification');
 
-            // Profile Page
-            // Route::get('profile', [])
+            // public message
+            Route::get('messages', [AdminController::class, 'messages'])->name('messages');
+
+            // team
+            Route::resource('team', TeamController::class);
+
+            // site profile
+            Route::resource('profile', SiteProfileController::class);
 
             // logout
             Route::get('logout', [AdminController::class, 'logout'])->name('logout');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogCategory;
 use App\Models\SellerBlog;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -23,10 +24,18 @@ class WelcomeController extends Controller
                 ->get(),
         ]);
     }
+    public function single_blog($id)
+    {
+        return view('public.pages.blog.single-blog', [
+            'blog' => SellerBlog::find($id)
+        ]);
+    }
 
     public function about_us()
     {
-        return view('public.pages.about-us.index');
+        return view('public.pages.about-us.index', [
+            'teamMembers' => Team::get()
+        ]);
     }
 
     public function contact_us()

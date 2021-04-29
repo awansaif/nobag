@@ -63,7 +63,8 @@
                         </ul>
                         <div class="ct-article-description">
                             <p style="height:100px; overflow:hidden;">{{ $article->body }}</p>
-                            <a href="blog-single.html" class="btn-primary btn-lg btn text-uppercase">read article</a>
+                            <a href="{{ Route('singleBlog',$article->id) }}"
+                                class="btn-primary btn-lg btn text-uppercase">read article</a>
                         </div>
                     </div>
                 </article>

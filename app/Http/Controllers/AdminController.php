@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use App\Models\Buyer;
+use App\Models\ContactUs;
 use App\Models\Editior;
 use App\Models\Seller;
 use Illuminate\Http\Request;
@@ -53,6 +53,16 @@ class AdminController extends Controller
         ]);
     }
 
+    // messages
+    public function messages()
+    {
+        ContactUs::where('is_read', 0)->update([
+            'is_read' => 1
+        ]);
+        return view('admin.pages.messages.index', [
+            'messages' => ContactUs::orderBy('id', 'DESC')->get()
+        ]);
+    }
     // logout
     public function logout()
     {

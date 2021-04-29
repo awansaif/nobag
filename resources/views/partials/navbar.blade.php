@@ -13,7 +13,7 @@
             <a href="{{ route('about-us') }}">About Us</a>
         </li>
         <li>
-            <a href="{{ route('contact-us') }}">contact</a>
+            <a href="{{ route('contact-us.index') }}">contact</a>
         </li>
     </ul>
 </nav>
@@ -32,19 +32,46 @@
     <div class="ct-topBar text-uppercase ct-fw-400">
         <div class="container">
             <ul class="list-inline pull-left ct-information-contact">
-                <li><i class="fa fa-phone"></i>phone:<a href="tel:(012)345-6789"> (012) 345-6789</a></li>
-                <li><i class="fa fa-envelope-o"></i>mail:<a href="mailto:tourstickets@info.com">
-                        tours&amp;tickets@info.com</a></li>
+                <li>
+                    <i class="fa fa-phone"></i>phone:
+                    <a
+                        href="tel:{{ App\Models\SiteProfile::pluck('phone')->first() }}">{{ App\Models\SiteProfile::pluck('phone')->first() }}</a>
+                </li>
+                <li>
+                    <i class="fa fa-envelope-o"></i>mail:
+                    <a href="mailto:{{ App\Models\SiteProfile::pluck('email')->first() }}">
+                        {{ App\Models\SiteProfile::pluck('email')->first() }}
+                    </a>
+                </li>
             </ul>
             <div class="pull-right">
                 <ul class="list-inline">
                     <li>
                         <ul class="list-inline ct-socials">
-                            <li><a href="https://www.facebook.com/createITpl"><i class="fa fa-facebook"></i></a>
+                            <li>
+                                <a
+                                    href="{{ App\Models\SiteProfile::pluck('facebook')->first() == null ? '#' : App\Models\SiteProfile::pluck('facebook')->first()}}">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
                             </li>
-                            <li><a href="https://twitter.com/createitpl"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="http://www.createit.pl/"><i class="fa fa-wordpress"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li>
+                                <a
+                                    href="{{ App\Models\SiteProfile::pluck('twitter')->first() == null ? '#' : App\Models\SiteProfile::pluck('twitter')->first()}}">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="{{ App\Models\SiteProfile::pluck('instagram')->first() == null ? '#' : App\Models\SiteProfile::pluck('instagram')->first()}}">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="{{ App\Models\SiteProfile::pluck('youtube')->first() == null ? '#' : App\Models\SiteProfile::pluck('youtube')->first()}}">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="{{ Route('guide.loginForm') }}">Are you guide?</a></li>
@@ -72,7 +99,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="{{ route('contact-us') }}">Contact</a>
+                    <a href="{{ route('contact-us.index') }}">Contact</a>
                 </li>
             </ul>
         </div>
