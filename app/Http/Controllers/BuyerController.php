@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ForgetPassword;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use App\Models\Buyer;
+use App\Models\BookTrip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -66,7 +67,12 @@ class BuyerController extends Controller
 
     public function dashboard()
     {
-        return view('buyer.dashboard');
+        return view('buyer.dashboard', [
+            'trips' => BookTrip::where('buyer_id', auth()->guard('buyer')->user()->id)->count(),
+            'guides' =>
+            BookTrip::where('buyer_id', auth()->guard('buyer')->user()->id)->count(),
+            'cost' => BookTrip::where('buyer_id', auth()->guard('buyer')->user()->id)->sum('price')
+        ]);
     }
 
     // Password Update

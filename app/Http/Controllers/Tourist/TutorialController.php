@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Tourist;
 
-use App\Models\BookTrip;
-use App\Models\Trip;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class BookTripController extends Controller
+class TutorialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,20 +33,9 @@ class BookTripController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $trip = Trip::FindorFail($id);
-        BookTrip::create([
-            'buyer_id' => auth()->guard('buyer')->user()->id,
-            'trip_id'  => $trip->id,
-            'seller_id' => $trip->seller_id,
-            'price'    => $trip->cost,
-        ]);
-
-        return view('public.booktrip.confirm', [
-            'message' => 'Congragulation for booking trip.',
-            'trip'   => $trip
-        ]);
+        //
     }
 
     /**
@@ -58,18 +46,7 @@ class BookTripController extends Controller
      */
     public function show($id)
     {
-        $trip = Trip::FindorFail($id);
-        BookTrip::create([
-            'buyer_id' => auth()->guard('buyer')->user()->id,
-            'trip_id'  => $trip->id,
-            'seller_id' => $trip->seller_id,
-            'price'    => $trip->cost,
-        ]);
-
-        return view('public.booktrip.confirm', [
-            'message' => 'Congragulation for booking trip.',
-            'trip'   => $trip
-        ]);
+        //
     }
 
     /**

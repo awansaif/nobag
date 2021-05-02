@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Tourist;
 
-use App\Models\BookTrip;
+use App\Http\Controllers\Controller;
 use App\Models\Trip;
+use App\Models\BookTrip;
 use Illuminate\Http\Request;
 
-class BookTripController extends Controller
+class TripController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class BookTripController extends Controller
      */
     public function index()
     {
-        //
+        return view('buyer.pages.trip.index', [
+            'trips' => Trip::orderBy('id', 'DESC')->get()
+        ]);
     }
 
     /**
@@ -34,20 +37,9 @@ class BookTripController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $trip = Trip::FindorFail($id);
-        BookTrip::create([
-            'buyer_id' => auth()->guard('buyer')->user()->id,
-            'trip_id'  => $trip->id,
-            'seller_id' => $trip->seller_id,
-            'price'    => $trip->cost,
-        ]);
-
-        return view('public.booktrip.confirm', [
-            'message' => 'Congragulation for booking trip.',
-            'trip'   => $trip
-        ]);
+        //
     }
 
     /**
@@ -58,17 +50,8 @@ class BookTripController extends Controller
      */
     public function show($id)
     {
-        $trip = Trip::FindorFail($id);
-        BookTrip::create([
-            'buyer_id' => auth()->guard('buyer')->user()->id,
-            'trip_id'  => $trip->id,
-            'seller_id' => $trip->seller_id,
-            'price'    => $trip->cost,
-        ]);
-
-        return view('public.booktrip.confirm', [
-            'message' => 'Congragulation for booking trip.',
-            'trip'   => $trip
+        return view('buyer.pages.trip.show', [
+            'trip' => Trip::FindorFail($id)
         ]);
     }
 
@@ -104,5 +87,14 @@ class BookTripController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function taken_trips()
+    {
+        // dd(BookTrip::with('trip')->where('buyer_id', auth()->guard('buyer')->user()->id)->orderBy('id', 'DESC')->get());
+        return view('buyer.pages.trip.booked', [
+            'trips' => BookTrip::with('trip')->where('buyer_id', auth()->guard('buyer')->user()->id)->orderBy('id', 'DESC')->get(),
+        ]);
     }
 }

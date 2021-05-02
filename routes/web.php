@@ -21,6 +21,7 @@ use App\Http\Controllers\Page\ContactUsController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SellerProfileController;
 use App\Http\Controllers\SiteProfileController;
+use App\Http\Controllers\Tourist\TripController as TouristTripController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\WelcomeController;
@@ -108,7 +109,6 @@ Route::prefix('guide')
 // buyer routes
 Route::prefix('tourist')
     ->name('tourist.')
-    ->namespace('tourist.')
     ->group(function () {
         Route::middleware(['checkguest'])->group(function () {
             // login route
@@ -142,6 +142,10 @@ Route::prefix('tourist')
             Route::get('profile', [BuyerProfileController::class, 'create'])->name('profileForm');
             Route::post('profile/{id}', [BuyerProfileController::class, 'store'])->name('profile');
 
+
+            // Trips
+            Route::get('my-trips', [TouristTripController::Class, 'taken_trips'])->name('takenTrips');
+            Route::resource('trips', TouristTripController::class);
 
             // book trip
             Route::resource('book-trip', BookTripController::class);

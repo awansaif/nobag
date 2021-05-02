@@ -23,7 +23,7 @@
                             </li>
                             <li class="ct-article-date">
                                 <i class="fa fa-calendar"></i>
-                                31 March, 2015
+                                {{ date('d M, Y',strtotime(now())) }}
                             </li>
                         </ul>
                     </div>
@@ -34,17 +34,17 @@
                     <div class="ct-article-body">
                         <div class="ct-article-title">
                             <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Total Trips</h5>
-                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">80</h4>
+                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">{{ $trips }}</h4>
                         </div>
                         <ul class="ct-article-meta list-unstyled list-inline">
                             <li class="ct-article-tags">
                                 <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">Lastt Trip</a></li>
+                                    <li><a href="#" itemprop="url">Last Updated</a></li>
                                 </ul>
                             </li>
                             <li class="ct-article-date">
                                 <i class="fa fa-calendar"></i>
-                                31 March, 2015
+                                {{ date('d M, Y',strtotime(now())) }}
                             </li>
                         </ul>
                     </div>
@@ -55,18 +55,18 @@
                 <article class="ct-article ct-fw-600 ct-article--grey">
                     <div class="ct-article-body">
                         <div class="ct-article-title">
-                            <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Visited Countires</h5>
-                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">80</h4>
+                            <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Take Guides</h5>
+                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">{{ $guides }}</h4>
                         </div>
                         <ul class="ct-article-meta list-unstyled list-inline">
                             <li class="ct-article-tags">
                                 <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">Last Trip</a></li>
+                                    <li><a href="#" itemprop="url">Last Updated</a></li>
                                 </ul>
                             </li>
                             <li class="ct-article-date">
                                 <i class="fa fa-calendar"></i>
-                                31 March, 2015
+                                {{ date('d M, Y',strtotime(now())) }}
                             </li>
                         </ul>
                     </div>
@@ -77,17 +77,17 @@
                     <div class="ct-article-body">
                         <div class="ct-article-title">
                             <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Total Cost</h5>
-                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">80</h4>
+                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">${{ $cost }}</h4>
                         </div>
                         <ul class="ct-article-meta list-unstyled list-inline">
                             <li class="ct-article-tags">
                                 <ul class="list-unstyled list-inline text-uppercase">
-                                    <li><a href="#" itemprop="url">Last Trip</a></li>
+                                    <li><a href="#" itemprop="url">Last Updated</a></li>
                                 </ul>
                             </li>
                             <li class="ct-article-date">
                                 <i class="fa fa-calendar"></i>
-                                31 March, 2015
+                                {{ date('d M, Y',strtotime(now())) }}
                             </li>
                         </ul>
                     </div>

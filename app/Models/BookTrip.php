@@ -9,10 +9,15 @@ class BookTrip extends Model
 {
     use HasFactory;
 
-    protected $filable = [
+    protected $fillable = [
         'buyer_id',
         'trip_id',
         'seller_id',
         'price',
     ];
+
+    public function trip()
+    {
+        return $this->belongsTo(Trip::class);
+    }
 }
