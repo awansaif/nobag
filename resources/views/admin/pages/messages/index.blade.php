@@ -37,6 +37,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Message</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +51,9 @@
                         </a>
                     </td>
                     <td>{{ $message->message }}</td>
+                    <td>
+                        <a href="{{ Route('admin.deletemessage',$message->id) }}" class="btn btn-danger">Remove</a>
+                    </td>
                 </tr>
                 @empty
 
@@ -61,6 +65,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Message</th>
+                    <th>Remove</th>
                 </tr>
             </tfoot>
         </table>

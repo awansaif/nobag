@@ -48,7 +48,7 @@ class AddEditorController extends Controller
         ]);
         $password = $request->surname[0] . uniqid();
         Editior::create([
-            'username' => $request->name . uniqid(),
+            'username' => $request->name[0] . uniqid(),
             'password' => Hash::make($password),
             'visible_password' => $password,
             'first_name' => $request->name,
@@ -78,7 +78,9 @@ class AddEditorController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.editor.edit', [
+            'editor' => Editior::find($id)
+        ]);
     }
 
     /**
@@ -90,7 +92,26 @@ class AddEditorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'username' => 'required|unique:editiors,username,' . $id,
+            'password' => 'required|min:8',
+            'name' => 'required',
+            'surname' => 'required',
+            'email'   => 'required|unique:editiors,email,' . $id,
+            'phone'   => 'required|unique:editiors,phone,' . $id
+        ]);
+        Editior::find($id)->update([
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'visible_password' => $request->password,
+            'first_name' => $request->name,
+            'surname'    => $request->surname,
+            'email'    => $request->email,
+            'phone'  => $request->phone,
+        ]);
+
+        $request->session()->flash('message', 'Editor updated successfully');
+        return back();
     }
 
     /**
@@ -99,8 +120,25 @@ class AddEditorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $editor = Editior::find($id);
+        $editor->delete();
+
+        $request->session()->flash('message', 'Editor removed successfully');
+        return back();
+    }
+    public function active(Request $request, $id)
+    {
+        $editor = Editior::find($id);
+        if ($editor->is_active == 1) {
+            $editor->is_active =  0;
+            $request->session()->flash('message', 'Editor deactivated successfully');
+        } else {
+            $editor->is_active =  1;
+            $request->session()->flash('message', 'Editor activated successfully');
+        }
+        $editor->save();
+        return back();
     }
 }

@@ -50,8 +50,11 @@
                             </div>
                         </form>
                     </div>
-                    <div class="text-left"><a href="#" class="text-capitalize ct-u-colorMotive ct-fw-700">Forgot your
-                            password?</a></div>
+                    <div class="text-left">
+                        <a href="{{ Route('tourist.forgetPassword') }}"
+                            class="text-capitalize ct-u-colorMotive ct-fw-700">Forgot your
+                            password?</a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-5 text-center">

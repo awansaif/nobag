@@ -35,8 +35,8 @@
                         </li>
                         <li class="nav-item">
                             {{-- active --}}
-                            <a href="{{ Route('admin.sellers') }}"
-                                class="nav-link {{ Route::currentRouteName() == 'admin.sellers' ? 'active' : ''  }}">
+                            <a href="{{ Route('admin.guides.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.guides.index' ? 'active' : ''  }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Guide</p>
                             </a>
@@ -45,14 +45,50 @@
 
                         <li class="nav-item">
                             {{-- active --}}
-                            <a href="{{ Route('admin.tourists') }}"
-                                class="nav-link {{ Route::currentRouteName() == 'admin.tourists' ? 'active' : ''  }}">
+                            <a href="{{ Route('admin.tourists.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.tourists.index' ? 'active' : ''  }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tourists</p>
                             </a>
                         </li>
 
                         {{--  --}}
+                        <span class="text-muted">ARTICLE</span>
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ Route('admin.articles.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.articles.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Articles</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ Route('admin.article-categories.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.article-categories.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Category</p>
+                            </a>
+                        </li>
+
+                        {{--  --}}
+                        <span class="text-muted">TRIPS</span>
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ Route('admin.articles.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.articles.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Articles</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ Route('admin.article-categories.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.article-categories.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Category</p>
+                            </a>
+                        </li>
                         <span class="text-muted">PUBLIC</span>
                         <li class="nav-item">
                             {{-- active --}}
@@ -63,6 +99,15 @@
                                 <span class="badge badge-success">
                                     {{ App\Models\ContactUs::where('is_read',0)->count() }}
                                 </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ Route('admin.testimonials.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.testimonials.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Testimonials</p>
                             </a>
                         </li>
 
@@ -87,7 +132,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column" style="position: absolute; bottom:10px;">
+            <ul class="nav nav-pills nav-sidebar flex-column" style="position: relative; bottom:10px;">
                 <li class="nav-item mt-auto">
                     {{-- active --}}
                     <a href="{{ Route('admin.logout') }}" class="nav-link">

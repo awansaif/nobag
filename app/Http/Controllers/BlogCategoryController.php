@@ -14,8 +14,8 @@ class BlogCategoryController extends Controller
      */
     public function index()
     {
-        return view('editor.pages.blog-category.index', [
-            'categories' => BlogCategory::orderBy('id', 'DESC')->get()
+        return view('admin.pages.article-category.index', [
+            'categories' => BlogCategory::with('articles')->orderBy('id', 'DESC')->get()
         ]);
     }
 
@@ -26,7 +26,7 @@ class BlogCategoryController extends Controller
      */
     public function create()
     {
-        return view('editor.pages.blog-category.create');
+        return view('admin.pages.article-category.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class BlogCategoryController extends Controller
             'category' => $request->category
         ]);
 
-        $request->session()->flash('message', 'Blog Category add successfully');
+        $request->session()->flash('message', 'Category add successfully');
         return back();
     }
 
@@ -66,10 +66,10 @@ class BlogCategoryController extends Controller
      * @param  \App\Models\BlogCategory  $blogCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(BlogCategory $blogCategory)
+    public function edit($id)
     {
-        return view('editor.pages.blog-category.update', [
-            'category' => $blogCategory
+        return view('admin.pages.article-category.edit', [
+            'category' => BlogCategory::find($id)
         ]);
     }
 
@@ -80,16 +80,16 @@ class BlogCategoryController extends Controller
      * @param  \App\Models\BlogCategory  $blogCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BlogCategory $blogCategory)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'category' => 'required|unique:blog_categories,category,' . $blogCategory->id
+            'category' => 'required|unique:blog_categories,category,' . $id
         ]);
 
-        $blogCategory->category =  $request->category;
-        $blogCategory->save();
-
-        $request->session()->flash('message', 'Blog Category updated successfully');
+        BlogCategory::find($id)->update([
+            'category' =>  $request->category
+        ]);
+        $request->session()->flash('message', 'Category updated successfully');
         return back();
     }
 
@@ -99,8 +99,10 @@ class BlogCategoryController extends Controller
      * @param  \App\Models\BlogCategory  $blogCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BlogCategory $blogCategory)
+    public function destroy(Request $request, $id)
     {
-        //
+        BlogCategory::find($id)->delete();
+        $request->session()->flash('message', 'Category deleted successfully');
+        return back();
     }
 }

@@ -67,16 +67,10 @@
                     <img src="{{ asset($profile->profile ? $profile->profile->personal_photo : '') }}"
                         style="margin-bottom: 2px;" alt="" width="200px" height="200px">
                     <div class="input-item">
-                        <span class="ct-fw-600">Peranol Photo:</span>
+                        <span class="ct-fw-600">Personal Photo:</span>
                         <input type="file" name="personal_photo" class="form-control input-sm input--withBorder"
                             accept="image/*">
                     </div>
-                    <video src="{{ asset($profile->profile ? $profile->profile->personal_video : '') }}" controls
-                        width="200px" height="200px"></video>
-                    <div class="input-item"><span class="ct-fw-600">Video:</span>
-                        <input type="file" name="personal_video" class="form-control input-sm input--withBorder">
-                    </div>
-
                 </div>
                 <div class="text-right">
                     <button type="submit" class="btn btn-success btn-lg text-uppercase ct-u-marginTop20">Update

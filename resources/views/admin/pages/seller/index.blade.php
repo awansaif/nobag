@@ -25,6 +25,7 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
+        <a href="{{ Route('admin.guides.create') }}" class="btn btn-success float-right">Add Guide</a>
         <br>
         <br>
         @if(Session::has('message'))
@@ -37,18 +38,22 @@
                 <tr>
                     <th>#</th>
                     <th>User Name</th>
-                    <th>Password</th>
                     <th>First Name</th>
                     <th>Surname</th>
                     <th>Place OF Birth</th>
                     <th>Date of Birth</th>
                     <th>Nationality</th>
+                    <th>Qualification</th>
+                    <th>Language Spken</th>
                     <th>Phone #</th>
                     <th>Email</th>
                     <th>Fiscal Code</th>
                     <th>Vat Number</th>
                     <th>IBAN</th>
                     <th>Verified</th>
+                    <th>Activate/Deactivate</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,12 +61,13 @@
                 <tr>
                     <td>{{ $key + 1 }}</td>
                     <td>{{ $seller->user_name }}</td>
-                    <td>{{ $seller->visible_password }}</td>
                     <td>{{ $seller->first_name }}</td>
                     <td>{{ $seller->surname }}</td>
                     <td>{{ $seller->pob }}</td>
                     <td>{{ $seller->dob }}</td>
                     <td>{{ $seller->nationality }}</td>
+                    <td>{{ $seller->profile? $seller->profile->qualifiaction : '' }}</td>
+                    <td>{{ $seller->profile? $seller->profile->spoken_language : ''}}</td>
                     <td>{{ $seller->phone }}</td>
                     <td>{{ $seller->email }}</td>
                     <td>{{ $seller->fiscal_code }}</td>
@@ -74,6 +80,20 @@
                         <a class="btn btn-success" href="{{ Route('admin.sellerVerification',$seller->id) }}">Verify</a>
                         @endif
                     </td>
+                    <td>
+                        <a href="{{ Route('admin.guide-status',$seller->id) }}"
+                            class="btn btn-primary">{{ $seller->is_active? 'Active': 'Deactivate' }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ Route('admin.guides.edit',$seller->id) }}" class="btn btn-success">Edit</a>
+                    </td>
+                    <td>
+                        <form action="{{ Route('admin.guides.destroy',$seller->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
                 </tr>
                 @empty
 
@@ -83,18 +103,22 @@
                 <tr>
                     <th>#</th>
                     <th>User Name</th>
-                    <th>Password</th>
                     <th>First Name</th>
                     <th>Surname</th>
                     <th>Place OF Birth</th>
                     <th>Date of Birth</th>
                     <th>Nationality</th>
+                    <th>Qualification</th>
+                    <th>Language Spken</th>
                     <th>Phone #</th>
                     <th>Email</th>
                     <th>Fiscal Code</th>
                     <th>Vat Number</th>
                     <th>IBAN</th>
                     <th>Verified</th>
+                    <th>Activate/Deactivate</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
                 </tr>
             </tfoot>
         </table>

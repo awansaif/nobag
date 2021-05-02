@@ -39,45 +39,28 @@
                             <div class="widget-inner">
                                 <h6 class="text-uppercase ct-u-colorMotive ct-fw-600 ct-u-marginBottom30">last
                                     minute deals</h6>
-                                <div class="media"><a href="basic-package-single.html">
-                                        <div class="media-left"><img
-                                                src="{{ asset('assets/images/content/guide-tour/latest-deals.jpg') }}"
-                                                alt="deals"></div>
+                                @foreach (App\Models\Trip::take(3)->latest()->get() as $trip)
+                                <div class="media">
+                                    <a href="{{ Route('singleTrip', $trip->id) }}">
+                                        <div class="media-left">
+                                            @foreach (json_decode($trip->photos) as $item)
+                                            @if ($loop->first)
+                                            <img src="{{ asset($item) }}" alt="deals" width="50px" height="50px">
+                                            @endif
+
+                                            @endforeach
+                                        </div>
                                         <div class="media-body">
-                                            <h6 class="media-heading">Grand Colosseum, Rome</h6>
+                                            <h6 class="media-heading">{{ $trip->event_title }}</h6>
                                             <ul class="ct-productPrice ct-u-colorMotive list-unstyled list-inline">
                                                 <li><i class="fa fa-tag"></i></li>
-                                                <li><span class="ct-discount">$56</span></li>
-                                                <li>30% OFF: $45</li>
+                                                <li><span class="">${{ $trip->cost }}</span></li>
+                                                <li>{{ date('d M, Y',strtotime($trip->closing_date_of_the_sale)) }}</li>
                                             </ul>
                                         </div>
-                                    </a></div>
-                                <div class="media"><a href="basic-package-single.html">
-                                        <div class="media-left"><img
-                                                src="{{ asset('assets/images/content/guide-tour/latest-deals2.jpg') }}"
-                                                alt="deals"></div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading">St. Peter's Basilica</h6>
-                                            <ul class="ct-productPrice ct-u-colorMotive list-unstyled list-inline">
-                                                <li><i class="fa fa-tag"></i></li>
-                                                <li><span class="ct-discount">76</span></li>
-                                                <li>10% OFF: 68</li>
-                                            </ul>
-                                        </div>
-                                    </a></div>
-                                <div class="media"><a href="basic-package-single.html">
-                                        <div class="media-left"><img
-                                                src="{{ asset('assets/images/content/guide-tour/latest-deals3.jpg') }}"
-                                                alt="deals"></div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading">Bridge Ponte Di Rialto</h6>
-                                            <ul class="ct-productPrice ct-u-colorMotive list-unstyled list-inline">
-                                                <li><i class="fa fa-tag"></i></li>
-                                                <li><span class="ct-discount">$34</span></li>
-                                                <li>15% OFF: $24</li>
-                                            </ul>
-                                        </div>
-                                    </a></div>
+                                    </a>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -89,7 +72,7 @@
                                 <ul class="list-unstyled text-capitalize">
                                     @forelse ($articles as $article)
                                     <li>
-                                        <a href="blog-single.html">{{ $article->title }}</a>
+                                        <a href="{{ Route('singleBlog',$article->id) }}">{{ $article->title }}</a>
                                     </li>
                                     @empty
 
@@ -106,7 +89,7 @@
                                 <ul class="list-inline list-unstyled text-capitalize">
                                     @forelse ($categories as $category)
                                     <li>
-                                        <a href="blog-single.html">{{ $category->category }}</a>
+                                        <a href="#">{{ $category->category }}</a>
                                     </li>
                                     @empty
 
@@ -120,6 +103,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="ct-postfooter text-center"><span>&#169; Copyright 2015. All Rights Reserved</span></div>
+        <div class="ct-postfooter text-center"><span>&#169; Copyright {{ date('Y', strtotime(now())) }}. All Rights
+                Reserved</span></div>
     </div>
 </footer>

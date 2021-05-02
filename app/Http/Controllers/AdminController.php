@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Buyer;
 use App\Models\ContactUs;
 use App\Models\Editior;
 use App\Models\Seller;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,21 +39,14 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view('admin.dashboard', [
+            'articless' => Article::count(),
             'editor' => Editior::count(),
             'seller' => Seller::where('is_verified', 1)->count(),
             'buyer'  => Buyer::where('email_verified_at', '!=', null)->count(),
+            'trips'  => Trip::count(),
         ]);
     }
 
-    // tourists
-    public function tourists()
-    {
-        return view('admin.pages.buyer.index', [
-            'tourists' => Buyer::where('email_verified_at', '!=', null)
-                ->orderBy('id', 'DESC')
-                ->get()
-        ]);
-    }
 
     // messages
     public function messages()
@@ -62,6 +57,13 @@ class AdminController extends Controller
         return view('admin.pages.messages.index', [
             'messages' => ContactUs::orderBy('id', 'DESC')->get()
         ]);
+    }
+
+    public function delete_messages(Request $request, $id)
+    {
+        ContactUs::find($id)->delete();
+        $request->session()->flash('message', 'Message deleted successfully');
+        return back();
     }
     // logout
     public function logout()

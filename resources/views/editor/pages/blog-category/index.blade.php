@@ -38,7 +38,8 @@
                 <tr>
                     <th>#</th>
                     <th>Category</th>
-                    <th>Action</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +51,14 @@
                         <a href="{{ Route('editor.blogCategory.edit', $category->id) }}"
                             class="btn btn-success">Edit</a>
                     </td>
+                    <td>
+                        <form action="{{ Route('editor.blogCategory.destroy', $category->id) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger"
+                                onclick="return conifrm('Are you sure to delete category');">Remove</button>
+                        </form>
+                    </td>
                 </tr>
                 @empty
 
@@ -59,7 +68,8 @@
                 <tr>
                     <th>#</th>
                     <th>Category</th>
-                    <th>Action</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
                 </tr>
             </tfoot>
         </table>

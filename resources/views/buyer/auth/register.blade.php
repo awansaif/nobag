@@ -33,24 +33,36 @@
                         @endif
                         <form class="ct-form" method="POST" action="{{ Route('tourist.register') }}">
                             @csrf
+                            <p class="text-left text-muted">All fields are mondatory</p>
+                            <br>
                             <div class="input-group text-left">
-                                <div class="input-item"><span class="ct-fw-600">full Name:</span>
+                                <div class="input-item">
+                                    <span class="ct-fw-600">Full Name
+                                    </span>
                                     <input type="text" required="" name="first_name"
                                         class="form-control input-sm input--withBorder" value="{{ old('first_name') }}">
                                 </div>
-                                <div class="input-item"><span class="ct-fw-600">Sur Name:</span>
+                                <div class="input-item">
+                                    <span class="ct-fw-600">Sur Name:
+                                    </span>
                                     <input type="text" required="" name="surname"
                                         class="form-control input-sm input--withBorder" value="{{ old('surname') }}">
                                 </div>
-                                <div class="input-item"><span class="ct-fw-600">Date of Birth:</span>
+                                <div class="input-item">
+                                    <span class="ct-fw-600">Date of Birth:
+                                    </span>
                                     <input type="date" required="" name="dob"
                                         class="form-control input-sm input--withBorder" value="{{ old('dob') }}">
                                 </div>
-                                <div class="input-item"><span class="ct-fw-600">email address:</span>
+                                <div class="input-item">
+                                    <span class="ct-fw-600">email address:
+                                    </span>
                                     <input type="email" required="" name="email"
                                         class="form-control input-sm input--withBorder" value="{{ old('email') }}">
                                 </div>
-                                <div class="input-item"><span class="ct-fw-600">Password:</span>
+                                <div class="input-item">
+                                    <span class="ct-fw-600">Password:
+                                    </span>
                                     <input type="password" required="" name="password"
                                         class="form-control input-sm input--withBorder">
                                 </div>

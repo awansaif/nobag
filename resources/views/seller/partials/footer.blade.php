@@ -10,14 +10,25 @@
                                 <h6 class="text-uppercase ct-u-colorMotive ct-fw-600 ct-u-marginBottom30">
                                     contact info</h6>
                                 <ul class="list-inline list-unstyled">
-                                    <li><a
-                                            href="https://www.google.pl/maps/place/Con+Brio+Blvd,+Upper+Coomera+QLD+4209,+Australia/@-27.875425,153.2992508,17z/data=!3m1!4b1!4m2!3m1!1s0x6b91115395fd91fb:0x90a661613552390e"><i
-                                                class="fa fa-map-marker"></i>Con Brio Boulevard, Upper Coomera
-                                            QLD 4209, Australia</a></li>
-                                    <li><i class="fa fa-phone"></i>Phone:<a href="tel:(012)345-6789"> (012)
-                                            345-6789</a></li>
-                                    <li><i class="fa fa-envelope"></i>Mail:<a href="mailto:ticketstours@info.com">
-                                            tickets&amp;tours@info.com</a>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-map-marker">
+                                            </i>{{ App\Models\SiteProfile::pluck('address')->first() }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        Phone:
+                                        <a href="tel:{{ App\Models\SiteProfile::pluck('phone')->first() }}">
+                                            {{ App\Models\SiteProfile::pluck('phone')->first() }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope"></i>
+                                        Mail:
+                                        <a href="mailto:{{ App\Models\SiteProfile::pluck('email')->first() }}">
+                                            {{ App\Models\SiteProfile::pluck('email')->first() }}
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -76,11 +87,13 @@
                                 <h6 class="text-uppercase ct-u-colorMotive ct-fw-600 ct-u-marginBottom20">recent
                                     posts</h6>
                                 <ul class="list-unstyled text-capitalize">
-                                    <li><a href="blog-single.html">summer sang in me</a></li>
-                                    <li><a href="blog-single.html">Stonehenge aotearoa and lavender</a></li>
-                                    <li><a href="blog-single.html">the real capitol of italy</a></li>
-                                    <li><a href="blog-single.html">on the frog & toad</a></li>
-                                    <li><a href="blog-single.html">how to spend 4 days in rome</a></li>
+                                    @forelse ($articles as $article)
+                                    <li>
+                                        <a href="{{ Route('singleBlog',$article->id) }}">{{ $article->title }}</a>
+                                    </li>
+                                    @empty
+
+                                    @endforelse
                                 </ul>
                             </div>
                         </div>
@@ -91,14 +104,13 @@
                                 <h6 class="text-uppercase ct-u-colorMotive ct-fw-600 ct-u-marginBottom30">tags
                                 </h6>
                                 <ul class="list-inline list-unstyled text-capitalize">
-                                    <li><a href="blog-single.html">summer</a></li>
-                                    <li><a href="blog-single.html">offers</a></li>
-                                    <li><a href="blog-single.html">vacation</a></li>
-                                    <li><a href="blog-single.html">hot</a></li>
-                                    <li><a href="blog-single.html">voucher</a></li>
-                                    <li><a href="blog-single.html">travel</a></li>
-                                    <li><a href="blog-single.html">rome</a></li>
-                                    <li><a href="blog-single.html">colosseum</a></li>
+                                    @forelse ($categories as $category)
+                                    <li>
+                                        <a href="#">{{ $category->category }}</a>
+                                    </li>
+                                    @empty
+
+                                    @endforelse
                                 </ul>
                             </div>
                         </div>

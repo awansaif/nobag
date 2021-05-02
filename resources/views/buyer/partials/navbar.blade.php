@@ -21,31 +21,7 @@
                 <li><a href="tours-compare.html">compare tours</a></li>
             </ul>
         </li>
-        <li><a href="itinerary.html">Itinerary</a></li>
-        <li class="dropdown"><a href="index.html">Pages</a>
-            <ul class="dropdown-menu">
-                <li><a href="customize-destination.html">customize destination</a></li>
-                <li><a href="customize-package.html">customize package</a></li>
-                <li><a href="customize-wedding.html">customize wedding</a></li>
-                <li><a href="wedding-design.html">wedding design</a></li>
-                <li><a href="wedding-themes.html">wedding themes</a></li>
-                <li><a href="wedding-honeymoon.html">wedding honeymoon</a></li>
-                <li><a href="wedding-review.html">wedding review</a></li>
-                <li><a href="wedding-personalize.html">wedding personalize</a></li>
-                <li><a href="wedding-honeymoon.html">wedding honeymoon</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="faq2.html">FAQ type 2</a></li>
-                <li><a href="signin.html">sign in</a></li>
-                <li><a href="register.html">register</a></li>
-                <li><a href="tours-compare.html">compare tours</a></li>
-                <li><a href="about.html">gallery</a></li>
-                <li><a href="rewards.html">rewards</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="blog-single.html">blog single post</a></li>
-                <li><a href="testimonials.html">testimonials</a></li>
-            </ul>
-        </li>
+
         <li><a href="contact.html">contact</a></li>
     </ul>
 </nav>
@@ -80,11 +56,19 @@
                         <i class="fas fa-cart"></i>
                         <a href="contact.html">Cart</a>
                     </li>
-                    <li class="dropdown"><a href="index.html">{{ Auth::guard('buyer')->user()->first_name }}</a>
+                    <li class="dropdown">
+                        <a href="index.html"> <i class="fa fa-user"></i>
+                            {{ Auth::guard('buyer')->user()->first_name }}</a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{{ Route('tourist.profileForm') }}">Profile</a>
-                                <hr>
+                            </li>
+                            <hr>
+                            <li>
+                                <a href="{{ Route('tourist.setting') }}">Settings</a>
+                            </li>
+                            <hr>
+                            <li>
                                 <a href="{{ Route('tourist.logout') }}">Logout</a>
                             </li>
                         </ul>

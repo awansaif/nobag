@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Article;
 use App\Models\BlogCategory;
 use App\Models\SellerBlog;
 use Illuminate\Support\ServiceProvider;
@@ -31,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         View::share([
-            'articles' => SellerBlog::query()
+            'articles' => Article::query()
                 ->with('category', 'tags')
                 ->latest()
                 ->take(4)

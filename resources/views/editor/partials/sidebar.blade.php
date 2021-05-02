@@ -25,43 +25,26 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
+                    <span class="text-muted">ARTICLES</span>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             {{-- active --}}
-                            <a href="{{ Route('editor.guides') }}"
-                                class="nav-link {{ Route::currentRouteName() == 'editor.guides' ? 'active' : ''  }}">
+                            <a href="{{ Route('editor.articles.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'editor.articles.index' ? 'active' : ''  }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Guide</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            {{-- active --}}
-                            <a href="{{ Route('editor.tourists') }}"
-                                class="nav-link {{ Route::currentRouteName() == 'editor.tourists' ? 'active' : ''  }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Tourist</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            {{-- active --}}
-                            <a href="{{ Route('editor.blogCategory.index') }}"
-                                class="nav-link {{ Route::currentRouteName() == 'editor.blogCategory.index' ? 'active' : ''  }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Blog Categories</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            {{-- active --}}
-                            <a href="{{ Route('editor.logout') }}" class="nav-link">
-                                <i class="fas fa-sign-out-alt nav-icon"></i>
-                                <p>Logout</p>
+                                <p>Articles</p>
                             </a>
                         </li>
                     </ul>
-
+                </li>
+            </ul>
+            <ul class="nav nav-pills nav-sidebar flex-column" style="position: absolute; bottom:10px;">
+                <li class="nav-item">
+                    {{-- active --}}
+                    <a href="{{ Route('editor.logout') }}" class="nav-link">
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <p>Logout</p>
+                    </a>
                 </li>
             </ul>
         </nav>

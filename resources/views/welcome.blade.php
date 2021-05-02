@@ -758,18 +758,17 @@
     <div class="container">
         <div class="ct-heading--withBorder ct-heading--withBorderGrey ct-u-marginBottom40">
             <h4 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10">latest Articles</h4>
-            <p>Here comes text which you want.</p>
         </div>
         <div class="row">
             @foreach ($articles as $article)
             <div class="col-sm-6 col-md-3">
                 <article class="ct-article ct-fw-600 ct-article--grey">
-                    <a href="blog-single.html" itemprop="url">
+                    <a href="{{ Route('singleBlog',$article->id) }}" itemprop="url">
                         <img src="{{ asset($article->featured_image) }}" alt="Blog Post" itemprop="image" width="100%"
                             height="200px"></a>
                     <div class="ct-article-body">
                         <div class="ct-article-title">
-                            <a href="blog-single.html">
+                            <a href="" {{ Route('singleBlog',$article->id) }}">
                                 <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">{{ $article->title }}</h5>
                             </a>
                         </div>
@@ -787,7 +786,7 @@
                                 <ul class="list-unstyled list-inline text-uppercase">
                                     @forelse ($article->tags as $tag)
                                     <li>
-                                        <a href="#">{{ $tag->tag_title }}</a>
+                                        <a href="#">{{ $tag->tag }}</a>,
                                     </li>
                                     @empty
 
@@ -796,8 +795,9 @@
                             </li>
                         </ul>
                         <div class="ct-article-description">
-                            <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                {{ $article->body }}</p>
+                            {{-- <span
+                                style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; height:50px; width:400px;">
+                                {!! $article->body !!}</span> --}}
                             <a href="{{ Route('singleBlog',$article->id) }}"
                                 class="btn-primary btn-xs btn text-uppercase">read article</a>
                         </div>
@@ -808,122 +808,33 @@
         </div>
     </div>
 </section>
-<section>
-    <div id="ct-gallery" class="ct-gallery ct-js-gallery ct-gallery--col4 lightGallery">
-        <article data-src="./assets/images/content/guide-tour/galleryImage.jpg" class="ct-gallery-itemDefaultHover">
-            <figure class="ct-gallery-item"><img src="./assets/images/content/guide-tour/galleryImage.jpg"
-                    alt="gallery">
-                <figcaption class="ct-u-colorWhite text-uppercase">
-                    <div class="ct-u-displayTableVertical">
-                        <div class="ct-u-displayTableCell text-left">
-                            <h6 class="ct-gallery-itemTitle ct-fw-700">Beautiful Girl on Scooter</h6>
+<section class="ct-u-paddingTop70 ct-u-backgroundGreyLight">
+    <div class="container ct-u-relative"><img src="./assets/images/content/guide-tour/testimonials.png" data-bottom="0"
+            data-left="0" alt="testimonials" class="ct-js-imageOffset">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                <div class="ct-heading--withBorder ct-heading--withBorderGreyDark">
+                    <h4 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10">latest posts</h4><span
+                        class="text-capitalize ct-u-colorMotive">our happy clients</span>
+                </div>
+                <div data-adaptiveHeight="false" data-animations="true" data-autoplay="true" data-infinite="true"
+                    data-autoplaySpeed="3000" data-draggable="true" data-touchMove="false" data-arrows="true"
+                    data-items="1" class="ct-slick ct-js-slick ct-slick--arrowsTopBlue">
+                    @foreach (App\Models\Testmonial::all() as $testimonial)
+                    <div class="item">
+                        <div class="ct-slick-inner">
+                            <div class="ct-slick-content ct-u-paddingTop40 ct-u-paddingBottom70">
+                                <p class="ct-u-marginBottom40">
+                                    {!! $testimonial->message !!}
+                                </p>
+                                <span class="ct-fw-700 ct-u-italic">- {{ $testimonial->name }}</span>
+                            </div>
                         </div>
-                        <div class="ct-u-displayTableCell text-right"><span class="btn btn-xs btn-default">see
-                                gallery</span></div>
                     </div>
-                </figcaption>
-            </figure>
-        </article>
-        <article data-src="./assets/images/content/guide-tour/galleryImage2.jpg" class="ct-gallery-itemDefaultHover">
-            <figure class="ct-gallery-item"><img src="./assets/images/content/guide-tour/galleryImage2.jpg"
-                    alt="gallery">
-                <figcaption class="ct-u-colorWhite text-uppercase">
-                    <div class="ct-u-displayTableVertical">
-                        <div class="ct-u-displayTableCell text-left">
-                            <h6 class="ct-gallery-itemTitle ct-fw-700">Beautiful Girl on Scooter</h6>
-                        </div>
-                        <div class="ct-u-displayTableCell text-right"><span class="btn btn-xs btn-default">see
-                                gallery</span></div>
-                    </div>
-                </figcaption>
-            </figure>
-        </article>
-        <article data-src="./assets/images/content/guide-tour/galleryImage3.jpg" class="ct-gallery-itemDefaultHover">
-            <figure class="ct-gallery-item"><img src="./assets/images/content/guide-tour/galleryImage3.jpg"
-                    alt="gallery">
-                <figcaption class="ct-u-colorWhite text-uppercase">
-                    <div class="ct-u-displayTableVertical">
-                        <div class="ct-u-displayTableCell text-left">
-                            <h6 class="ct-gallery-itemTitle ct-fw-700">Beautiful Girl on Scooter</h6>
-                        </div>
-                        <div class="ct-u-displayTableCell text-right"><span class="btn btn-xs btn-default">see
-                                gallery</span></div>
-                    </div>
-                </figcaption>
-            </figure>
-        </article>
-        <article data-src="./assets/images/content/guide-tour/galleryImage4.jpg" class="ct-gallery-itemDefaultHover">
-            <figure class="ct-gallery-item"><img src="./assets/images/content/guide-tour/galleryImage4.jpg"
-                    alt="gallery">
-                <figcaption class="ct-u-colorWhite text-uppercase">
-                    <div class="ct-u-displayTableVertical">
-                        <div class="ct-u-displayTableCell text-left">
-                            <h6 class="ct-gallery-itemTitle ct-fw-700">Beautiful Girl on Scooter</h6>
-                        </div>
-                        <div class="ct-u-displayTableCell text-right"><span class="btn btn-xs btn-default">see
-                                gallery</span></div>
-                    </div>
-                </figcaption>
-            </figure>
-        </article>
-        <article data-src="{{ asset('assets/images/content/guide-tour/galleryImage5.jpg') }}"
-            class="ct-gallery-itemDefaultHover">
-            <figure class="ct-gallery-item"><img src="{{ asset('assets/images/content/guide-tour/galleryImage5.jpg') }}"
-                    alt="gallery">
-                <figcaption class="ct-u-colorWhite text-uppercase">
-                    <div class="ct-u-displayTableVertical">
-                        <div class="ct-u-displayTableCell text-left">
-                            <h6 class="ct-gallery-itemTitle ct-fw-700">Beautiful Girl on Scooter</h6>
-                        </div>
-                        <div class="ct-u-displayTableCell text-right"><span class="btn btn-xs btn-default">see
-                                gallery</span></div>
-                    </div>
-                </figcaption>
-            </figure>
-        </article>
-        <article data-src="{{ asset('assets/images/content/guide-tour/galleryImage6.jpg') }}"
-            class="ct-gallery-itemDefaultHover">
-            <figure class="ct-gallery-item"><img src="{{ asset('assets/images/content/guide-tour/galleryImage6.jpg') }}"
-                    alt="gallery">
-                <figcaption class="ct-u-colorWhite text-uppercase">
-                    <div class="ct-u-displayTableVertical">
-                        <div class="ct-u-displayTableCell text-left">
-                            <h6 class="ct-gallery-itemTitle ct-fw-700">Beautiful Girl on Scooter</h6>
-                        </div>
-                        <div class="ct-u-displayTableCell text-right"><span class="btn btn-xs btn-default">see
-                                gallery</span></div>
-                    </div>
-                </figcaption>
-            </figure>
-        </article>
-        <article data-src="./assets/images/content/guide-tour/galleryImage7.jpg" class="ct-gallery-itemDefaultHover">
-            <figure class="ct-gallery-item"><img src="{{ asset('assets/images/content/guide-tour/galleryImage7.jpg') }}"
-                    alt="gallery">
-                <figcaption class="ct-u-colorWhite text-uppercase">
-                    <div class="ct-u-displayTableVertical">
-                        <div class="ct-u-displayTableCell text-left">
-                            <h6 class="ct-gallery-itemTitle ct-fw-700">Beautiful Girl on Scooter</h6>
-                        </div>
-                        <div class="ct-u-displayTableCell text-right"><span class="btn btn-xs btn-default">see
-                                gallery</span></div>
-                    </div>
-                </figcaption>
-            </figure>
-        </article>
-        <article data-src="./assets/images/content/guide-tour/galleryImage8.jpg" class="ct-gallery-itemDefaultHover">
-            <figure class="ct-gallery-item"><img src="{{ asset('assets/images/content/guide-tour/galleryImage8.jpg') }}"
-                    alt="gallery">
-                <figcaption class="ct-u-colorWhite text-uppercase">
-                    <div class="ct-u-displayTableVertical">
-                        <div class="ct-u-displayTableCell text-left">
-                            <h6 class="ct-gallery-itemTitle ct-fw-700">Beautiful Girl on Scooter</h6>
-                        </div>
-                        <div class="ct-u-displayTableCell text-right"><span class="btn btn-xs btn-default">see
-                                gallery</span></div>
-                    </div>
-                </figcaption>
-            </figure>
-        </article>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 @endsection

@@ -17,5 +17,6 @@ class BuyerProfile extends Model
         'passions',
         'short_description',
         'fiscal_code',
+        'country',
     ];
 }

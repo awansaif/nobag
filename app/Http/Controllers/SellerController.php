@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Trip;
 
 class SellerController extends Controller
 {
@@ -19,7 +21,7 @@ class SellerController extends Controller
             'username' => 'required|exists:sellers,user_name',
             'password' => 'required|min:6'
         ]);
-        if (Auth::guard('seller')->attempt(['user_name' => $request->username, 'password' => $request->password])) {
+        if (Auth::guard('seller')->attempt(['user_name' => $request->username, 'password' => $request->password, 'is_active' => 1])) {
             return redirect()->route('guide.dashboard');
         } else {
             $request->session()->flash('error', 'Your passsword is incorrect. Please try again.');
@@ -72,7 +74,34 @@ class SellerController extends Controller
 
     public function dashboard()
     {
-        return view('seller.dashboard');
+        return view('seller.dashboard', [
+            'trips' => Trip::where('seller_id', auth()->guard('seller')->user()->id)->count()
+        ]);
+    }
+
+    // Password Update
+    public function setting()
+    {
+        return view('seller.pages.setting.index');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation' => 'required|min:8'
+        ]);
+        if (Hash::check($request->current_password, auth()->guard('seller')->user()->password)) {
+            Seller::where('id', auth()->guard('seller')->user()->id)->update([
+                'password' => Hash::make($request->password),
+            ]);
+            $request->session()->flash('message', 'Password changes successfully.');
+            return back();
+        } else {
+            $request->session()->flash('message', 'Your current Password not matched.');
+            return back();
+        }
     }
 
 

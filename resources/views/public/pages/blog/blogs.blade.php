@@ -45,14 +45,14 @@
                 @forelse ($articles as $article)
                 <article class="ct-article ct-fw-600 ct-article--inline">
                     <div class="ct-article-media">
-                        <a href="blog-single.html" itemprop="url">
+                        <a href={{ Route('singleBlog',$article->id) }}" itemprop="url">
                             <img src="{{ asset($article->featured_image) }}" alt="Blog Post" width="200px"
                                 height="200px">
                         </a>
                     </div>
                     <div class="ct-article-body">
                         <div class="ct-article-title">
-                            <a href="blog-single.html">
+                            <a href="{{ Route('singleBlog',$article->id) }}">
                                 <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">{{ $article->title }}</h5>
                             </a></div>
                         <ul class="ct-article-meta list-unstyled list-inline">
@@ -60,9 +60,25 @@
                                 <i class="fa fa-calendar"></i>
                                 {{ date('d F, Y', strtotime($article->created_at)) }}
                             </li>
+                            <li class="ct-article-category">
+                                <a href="#">
+                                    <i class="fa fa-folder"></i>{{ $article->category->category }}
+                                </a>
+                            </li>
+                            <li class="ct-article-tags">
+                                <ul class="list-unstyled list-inline text-uppercase">
+                                    @forelse ($article->tags as $tag)
+                                    <li>
+                                        <a href="#">{{ $tag->tag }}</a>,
+                                    </li>
+                                    @empty
+
+                                    @endforelse
+                                </ul>
+                            </li>
                         </ul>
                         <div class="ct-article-description">
-                            <p style="height:100px; overflow:hidden;">{{ $article->body }}</p>
+                            {{-- <p style="height:100px; overflow:hidden;">{!! $article->body !!}</p> --}}
                             <a href="{{ Route('singleBlog',$article->id) }}"
                                 class="btn-primary btn-lg btn text-uppercase">read article</a>
                         </div>

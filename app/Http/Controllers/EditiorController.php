@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SellerVerified;
+use App\Models\Article;
 use App\Models\Buyer;
 use App\Models\Editior;
 use App\Models\Seller;
@@ -27,7 +28,7 @@ class EditiorController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('editor')->attempt(['username' => $request->username, 'password' => $request->password])) {
+        if (Auth::guard('editor')->attempt(['username' => $request->username, 'password' => $request->password, 'is_active' => 1])) {
             return redirect()->route('editor.dashboard');
         } else {
             $request->session()->flash('error', 'Password Incorrect: Please Try Again.');
@@ -39,7 +40,7 @@ class EditiorController extends Controller
     public function dashboard()
     {
         return view('editor.dashboard', [
-            'blogs' => SellerBlog::count(),
+            'blogs' => Article::where('author', auth()->guard('editor')->user()->id)->count(),
             'seller' => Seller::where('is_verified', 1)->count(),
             'buyer'  => Buyer::where('email_verified_at', '!=', null)->count(),
         ]);

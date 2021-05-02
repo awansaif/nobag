@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\BlogCategory;
 use App\Models\SellerBlog;
 use App\Models\Team;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -17,7 +19,7 @@ class WelcomeController extends Controller
     public function blogs()
     {
         return view('public.pages.blog.blogs', [
-            'articles' => SellerBlog::query()
+            'articles' => Article::query()
                 ->with('category', 'tags')
                 ->latest()
                 ->take(4)
@@ -27,7 +29,17 @@ class WelcomeController extends Controller
     public function single_blog($id)
     {
         return view('public.pages.blog.single-blog', [
-            'blog' => SellerBlog::find($id)
+            'blog' => Article::find($id)
+        ]);
+    }
+
+    public function trips()
+    {
+    }
+    public function single_trip($id)
+    {
+        return view('public.pages.trip.signle', [
+            'trip' => Trip::find($id)
         ]);
     }
 
