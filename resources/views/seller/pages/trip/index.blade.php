@@ -89,7 +89,8 @@
                         </div>
                     </div>
                 </div>
-                <p class="ct-u-marginTop20">
+                <p class="ct-u-marginTop20"
+                    style="width:100%; height:80px;display:block;overflow:hidden;word-break: break-word; word-wrap: break-word;">
                     {{ $trip->short_description }}
                 </p>
             </div>

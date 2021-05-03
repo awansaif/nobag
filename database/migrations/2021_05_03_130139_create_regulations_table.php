@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTutorialsTable extends Migration
+class CreateRegulationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateTutorialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tutorials', function (Blueprint $table) {
+        Schema::create('regulations', function (Blueprint $table) {
             $table->id();
             $table->string('role');
             $table->string('title');
-            $table->text('tutorial');
+            $table->text('document');
             $table->text('description');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -30,6 +31,6 @@ class CreateTutorialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutorials');
+        Schema::dropIfExists('regulations');
     }
 }

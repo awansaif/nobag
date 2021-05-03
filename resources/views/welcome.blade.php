@@ -54,161 +54,47 @@
     <div class="container">
         <div class="ct-heading--withBorder ct-u-marginBottom70">
             <h4 class="ct-u-colorWhite text-uppercase ct-u-marginBottom10">popular packages</h4>
-            <p class="ct-u-colorBlueLight">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed
-                arcu ac ligula volutpat tincidunt vel ut mauris. Fusce nec ultrices leo.</p>
+            <p class="ct-u-colorBlueLight"></p>
         </div>
         <div class="row">
+            @foreach ($trips as $trip)
             <div class="col-md-6">
                 <div class="ct-productBox ct-u-marginBottom50">
                     <div class="ct-productBox-image">
-                        <div class="ct-productBox-imageContainer"><a href="itinerary.html"><img
-                                    src="./assets/images/content/guide-tour/product-image.jpg" alt="Product"></a></div>
+                        <div class="ct-productBox-imageContainer">
+                            <a href="itinerary.html">
+                                @foreach (json_decode($trip->photos) as $item)
+                                @if ($loop->last)
+                                <img src="{{ asset($item) }}" alt="Product" width="220px" height="220px">
+                                @endif
+                                @endforeach
+                            </a>
+                        </div>
                     </div>
                     <div class="ct-productBox-Description">
-                        <div class="ct-productBox-DescriptionInner"><a href="itinerary.html">
-                                <h5 class="text-uppercase ct-u-marginBottom20 ct-fw-700">adventure day</h5>
+                        <div class="ct-productBox-DescriptionInner">
+                            <a href="itinerary.html">
+                                <h5 class="text-uppercase ct-u-marginBottom20 ct-fw-700">{{ $trip->event_title }}</h5>
                             </a>
-                            <p>Vestibulum congue elit vitae nisi vestiub ulum, ut porttitor velit miaximus etaiu
-                                ci.</p>
+                            <p
+                                style="width:250px; height:80px;display:block;overflow:hidden;word-break: break-word; word-wrap: break-word;">
+                                {{ $trip->short_description }}</p>
                         </div>
-                        <div class="ct-productBox-Meta"><a href="itinerary.html"
+                        <div class="ct-productBox-Meta">
+                            <a href="{{ Route('singleTrip',$trip->id) }}"
                                 class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10">more
-                                details</a><span class="ct-price">$49</span>
+                                details</a>
+                            <span class="ct-price">${{ $trip->cost }}</span>
                             <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="ct-productBox ct-u-marginBottom50">
-                    <div class="ct-productBox-image">
-                        <div class="ct-productBox-imageContainer"><a href="itinerary.html"><img
-                                    src="./assets/images/content/guide-tour/product-image2.jpg" alt="Product"></a></div>
-                    </div>
-                    <div class="ct-productBox-Description">
-                        <div class="ct-productBox-DescriptionInner"><a href="itinerary.html">
-                                <h5 class="text-uppercase ct-u-marginBottom20 ct-fw-700">lovely boat tour</h5>
-                            </a>
-                            <p>Vestibulum congue elit vitae nisi vestiub ulum, ut porttitor velit miaximus etaiu
-                                ci.</p>
-                        </div>
-                        <div class="ct-productBox-Meta"><a href="itinerary.html"
-                                class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10">more
-                                details</a><span class="ct-price">$76</span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="ct-latest-deals ct-u-marginBottom70">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="text-uppercase ct-title"><span
-                                    class="pull-left ct-fw-700 ct-u-colorMotive">latest deals</span><a
-                                    href="itinerary.html" class="btn btn-primary btn-xs pull-right">more
-                                    deals</a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <div data-height="96" data-adaptiveHeight="false" data-animations="true"
-                                data-autoplay="true" data-infinite="true" data-autoplaySpeed="3000"
-                                data-draggable="true" data-touchMove="false" data-arrows="false" data-XSitems="2"
-                                data-SMitems="3" data-MDitems="4" data-LGitems="5" data-items="1"
-                                class="ct-slick ct-js-slick">
-                                <div class="item">
-                                    <div class="ct-slick-inner">
-                                        <div class="ct-slick-content"><a href="basic-package-single.html"><span
-                                                    class="ct-deal-name">Rome</span><span
-                                                    class="ct-deal-price">$378</span></a></div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ct-slick-inner">
-                                        <div class="ct-slick-content"><a href="basic-package-single.html"><span
-                                                    class="ct-deal-name">Milan</span><span
-                                                    class="ct-deal-price">$399</span></a></div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ct-slick-inner">
-                                        <div class="ct-slick-content"><a href="basic-package-single.html"><span
-                                                    class="ct-deal-name">Naples</span><span
-                                                    class="ct-deal-price">$405</span></a></div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ct-slick-inner">
-                                        <div class="ct-slick-content"><a href="basic-package-single.html"><span
-                                                    class="ct-deal-name">Venice</span><span
-                                                    class="ct-deal-price">$349</span></a></div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ct-slick-inner">
-                                        <div class="ct-slick-content"><a href="basic-package-single.html"><span
-                                                    class="ct-deal-name">Genoa</span><span
-                                                    class="ct-deal-price">$475</span></a></div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ct-slick-inner">
-                                        <div class="ct-slick-content"><a href="basic-package-single.html"><span
-                                                    class="ct-deal-name">Warsaw</span><span
-                                                    class="ct-deal-price">$250</span></a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ct-productBox ct-u-marginBottom50">
-                    <div class="ct-productBox-image">
-                        <div class="ct-productBox-imageContainer"><a href="itinerary.html"><img
-                                    src="./assets/images/content/guide-tour/product-image3.jpg" alt="Product"></a></div>
-                    </div>
-                    <div class="ct-productBox-Description">
-                        <div class="ct-productBox-DescriptionInner"><a href="itinerary.html">
-                                <h5 class="text-uppercase ct-u-marginBottom20 ct-fw-700">romantic colosseum</h5>
-                            </a>
-                            <p>Vestibulum congue elit vitae nisi vestiub ulum, ut porttitor velit miaximus etaiu
-                                ci.</p>
-                        </div>
-                        <div class="ct-productBox-Meta"><a href="itinerary.html"
-                                class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10">more
-                                details</a><span class="ct-price">$69</span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ct-productBox ct-u-marginBottom50">
-                    <div class="ct-productBox-image">
-                        <div class="ct-productBox-imageContainer"><a href="itinerary.html"><img
-                                    src="./assets/images/content/guide-tour/product-image4.jpg" alt="Product"></a></div>
-                    </div>
-                    <div class="ct-productBox-Description">
-                        <div class="ct-productBox-DescriptionInner"><a href="itinerary.html">
-                                <h5 class="text-uppercase ct-u-marginBottom20 ct-fw-700">pisa tower</h5>
-                            </a>
-                            <p>Vestibulum congue elit vitae nisi vestiub ulum, ut porttitor velit miaximus etaiu
-                                ci.</p>
-                        </div>
-                        <div class="ct-productBox-Meta"><a href="itinerary.html"
-                                class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10">more
-                                details</a><span class="ct-price">$27</span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+
 <section>
     <div style="position: relative;">
         <img src="{{ asset('assets/images/content/guide-tour/slider-tabImage.jpg') }}" alt="" width="100%">

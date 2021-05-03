@@ -48,14 +48,17 @@
                                 </div>
                                 <div class="input-item"><span class="ct-fw-600">Date of Birth:</span>
                                     <input type="date" required="" name="dob"
-                                        class="form-control input-sm input--withBorder" value="{{ old('dob') }}">
+                                        class="form-control input-sm input--withBorder" max="2002-12-31"
+                                        value="{{ old('dob') }}">
                                 </div>
                                 <div class="input-item"><span class="ct-fw-600">Nationality:</span>
-                                    <select class="ct-select ct-js-selectize" name="nationality">
+                                    <input type="text" name="nationality" id=""
+                                        class="form-control input-sm input--withBorder" placeholder="Nationality">
+                                    {{-- <select class="ct-select ct-js-selectize" name="nationality">
                                         <option value="1">USA</option>
                                         <option value="2">Poland</option>
                                         <option value="3">UK</option>
-                                    </select>
+                                    </select> --}}
                                 </div>
                                 <div class="input-item"><span class="ct-fw-600">phone:</span>
                                     <input type="tel" required="" name="phone"

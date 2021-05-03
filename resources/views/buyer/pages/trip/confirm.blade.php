@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('buyer.layout.buyer')
 
 @section('content')
 <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax"
@@ -18,7 +18,7 @@
     <div class="ct-breadcrumbs">
         <ul class="list-inline list-unstyled text-uppercase">
             <li>
-                <a href="{{ Route('welcome') }}">
+                <a href="{{ Route('tourist.dashboard') }}">
                     <i class="fa fa-home"></i>
                 </a>
                 <i class="fa fa-angle-right"></i>
@@ -29,15 +29,14 @@
 </header>
 <section class="ct-u-paddingTop50 ct-u-paddingBottom70">
     <div class="container">
-        @if(Session::has('message'))
+        @if($message)
         <div class="alert alert-success">
-            {{ Session::get('message') }}
+            {{ $message }}
         </div>
         @endif
         <h4 class="ct-u-marginBottom30">
             {{ $trip->event_title }}
-            <a href="{{ Route('tourist.book-trip.show', $trip->id) }}"
-                class="btn btn-primary text-uppercase btn-xs pull-right">Book Now</a>
+            <a href="#" class="btn btn-success text-uppercase btn-xs pull-right">Booking Confirmed</a>
         </h4>
         <div class="row ct-u-colorBlackLight">
             <div class="col-md-8">
@@ -120,6 +119,7 @@
                     {{ $item->tag }},
                     @endforeach
                 </li>
+                <li><span class="ct-fw-700">Virtual Link:</span> {{ $trip->virtual_connection_link }}</li>
             </ul>
             <div class="clearfix"></div>
         </div>

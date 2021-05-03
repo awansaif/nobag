@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BookTrip;
 use App\Models\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,7 +76,10 @@ class SellerController extends Controller
     public function dashboard()
     {
         return view('seller.dashboard', [
-            'trips' => Trip::where('seller_id', auth()->guard('seller')->user()->id)->count()
+            'trips' => Trip::where('seller_id', auth()->guard('seller')->user()->id)->count(),
+            'ticketSales' => BookTrip::where('seller_id', auth()->guard('seller')->user()->id)->count(),
+            'toruists' =>
+            BookTrip::where('seller_id', auth()->guard('seller')->user()->id)->count(),
         ]);
     }
 

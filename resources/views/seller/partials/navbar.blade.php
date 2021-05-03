@@ -40,8 +40,8 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
-                                    <a href="basic-package.html">Toutorial</a>
-                                    <a href="basic-package-single.html">Documents/regulation</a>
+                                    <a href="{{ Route('guide.tutorials.index') }}">Toutorial</a>
+                                    <a href="{{ Route('guide.regulations.index') }}">Documents/regulation</a>
                                 </div>
                             </li>
                         </ul>

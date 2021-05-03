@@ -31,7 +31,8 @@
                             <h5 class="text-uppercase ct-u-marginBottom20 ct-fw-700">{{ $trip->trip->event_title }}
                             </h5>
                         </a>
-                        <p>
+                        <p
+                            style="width:250px; height:80px;display:block;overflow:hidden;word-break: break-word; word-wrap: break-word;">
                             {{ $trip->trip->short_description }}</p>
                     </div>
                     <div class="ct-productBox-Meta">

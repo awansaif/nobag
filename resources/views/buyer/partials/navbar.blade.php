@@ -27,7 +27,7 @@
                             <li>
                                 <div class="yamm-content">
                                     <a href="{{ Route('tourist.trips.index') }}">New Trips</a>
-                                    <a href="{{ Route('tourist.takenTrips') }}">Taken Trip</a>
+                                    <a href="{{ Route('tourist.takenTrips') }}">My Trip</a>
                             </li>
                         </ul>
                     </li>
@@ -36,8 +36,8 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
-                                    <a href="#">Tutorial</a>
-                                    <a href="#">Documents/regulation</a>
+                                    <a href="{{ Route('tourist.tutorials.index') }}">Tutorial</a>
+                                    <a href="{{ Route('tourist.regulations.index') }}">Documents/regulation</a>
                             </li>
                         </ul>
                     </li>

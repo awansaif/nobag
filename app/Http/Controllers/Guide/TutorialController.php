@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Tourist;
+namespace App\Http\Controllers\Guide;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tutorial;
@@ -15,8 +15,8 @@ class TutorialController extends Controller
      */
     public function index()
     {
-        return view('buyer.pages.tutorial.index', [
-            'tutorials' => Tutorial::where('role', 'Tourist')->orderBy('id', 'DESC')->get()
+        return view('seller.pages.tutorial.index', [
+            'tutorials' => Tutorial::where('role', 'Guide')->orderBy('id', 'DESC')->get()
         ]);
     }
 

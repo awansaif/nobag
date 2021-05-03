@@ -56,20 +56,28 @@ class BookTripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $trip = Trip::FindorFail($id);
-        BookTrip::create([
-            'buyer_id' => auth()->guard('buyer')->user()->id,
-            'trip_id'  => $trip->id,
-            'seller_id' => $trip->seller_id,
-            'price'    => $trip->cost,
-        ]);
+        if ($trip->available_places != 0) {
+            $trip->update([
+                'available_places' => $trip->available_places - 1
+            ]);
+            BookTrip::create([
+                'buyer_id' => auth()->guard('buyer')->user()->id,
+                'trip_id'  => $trip->id,
+                'seller_id' => $trip->seller_id,
+                'price'    => $trip->cost,
+            ]);
 
-        return view('public.booktrip.confirm', [
-            'message' => 'Congragulation for booking trip.',
-            'trip'   => $trip
-        ]);
+            return view('buyer.pages.trip.confirm', [
+                'message' => 'Congragulation for booking trip.',
+                'trip'   => $trip
+            ]);
+        } else {
+            $request->session()->flash('message', 'This trip seats are already fulled');
+            return back();
+        }
     }
 
     /**

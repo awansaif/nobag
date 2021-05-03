@@ -33,7 +33,7 @@
                         @endif
                         <form class="ct-form" method="POST" action="{{ Route('tourist.register') }}">
                             @csrf
-                            <p class="text-left text-muted">All fields are mondatory</p>
+                            <p class="text-left text-danger">* All fields are mondatory</p>
                             <br>
                             <div class="input-group text-left">
                                 <div class="input-item">
@@ -51,8 +51,8 @@
                                 <div class="input-item">
                                     <span class="ct-fw-600">Date of Birth:
                                     </span>
-                                    <input type="date" required="" name="dob"
-                                        class="form-control input-sm input--withBorder" value="{{ old('dob') }}">
+                                    <input type="date" class="form-control input-sm input--withBorder" required=""
+                                        width="276" name="dob" value="{{ old('dob') }}" max="2002-12-31">
                                 </div>
                                 <div class="input-item">
                                     <span class="ct-fw-600">email address:

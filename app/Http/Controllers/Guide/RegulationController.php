@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Tourist;
+namespace App\Http\Controllers\Guide;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tutorial;
+use App\Models\Regulation;
 use Illuminate\Http\Request;
 
-class TutorialController extends Controller
+class RegulationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class TutorialController extends Controller
      */
     public function index()
     {
-        return view('buyer.pages.tutorial.index', [
-            'tutorials' => Tutorial::where('role', 'Tourist')->orderBy('id', 'DESC')->get()
+        return view('seller.pages.regulation.index', [
+            'regulations' => Regulation::where('role', 'Guide')->orderBy('id', 'DESC')->get()
         ]);
     }
 
@@ -44,10 +44,10 @@ class TutorialController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tutorial  $tutorial
+     * @param  \App\Models\Regulation  $regulation
      * @return \Illuminate\Http\Response
      */
-    public function show(Tutorial $tutorial)
+    public function show(Regulation $regulation)
     {
         //
     }
@@ -55,10 +55,10 @@ class TutorialController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tutorial  $tutorial
+     * @param  \App\Models\Regulation  $regulation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tutorial $tutorial)
+    public function edit(Regulation $regulation)
     {
         //
     }
@@ -67,10 +67,10 @@ class TutorialController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tutorial  $tutorial
+     * @param  \App\Models\Regulation  $regulation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tutorial $tutorial)
+    public function update(Request $request, Regulation $regulation)
     {
         //
     }
@@ -78,10 +78,10 @@ class TutorialController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tutorial  $tutorial
+     * @param  \App\Models\Regulation  $regulation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tutorial $tutorial)
+    public function destroy(Regulation $regulation)
     {
         //
     }

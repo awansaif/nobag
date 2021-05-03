@@ -13,7 +13,7 @@
                     <div class="ct-article-body">
                         <div class="ct-article-title">
                             <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Ticket Sale</h5>
-                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">Bronze</h4>
+                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">{{ $ticketSales }}</h4>
                         </div>
                         <ul class="ct-article-meta list-unstyled list-inline">
                             <li class="ct-article-tags">
@@ -56,7 +56,7 @@
                     <div class="ct-article-body">
                         <div class="ct-article-title">
                             <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">Total Tourist</h5>
-                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">80</h4>
+                            <h4 class="text-uppercase ct-u-colorMotive ct-fw-700">{{ $toruists }}</h4>
                         </div>
                         <ul class="ct-article-meta list-unstyled list-inline">
                             <li class="ct-article-tags">

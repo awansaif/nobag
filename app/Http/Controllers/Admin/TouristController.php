@@ -17,7 +17,7 @@ class TouristController extends Controller
     public function index()
     {
         return view('admin.pages.buyer.index', [
-            'tourists' => Buyer::with('profile')->where('email_verified_at', '!=', null)
+            'tourists' => Buyer::with('profile', 'trips')->withCount('trips')->where('email_verified_at', '!=', null)
                 ->orderBy('id', 'DESC')
                 ->get()
         ]);

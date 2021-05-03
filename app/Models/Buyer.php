@@ -25,4 +25,9 @@ class Buyer extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(BuyerProfile::class);
     }
+
+    public function trips()
+    {
+        return $this->hasMany(BookTrip::class);
+    }
 }

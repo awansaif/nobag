@@ -43,7 +43,8 @@
                             </div>
                             <div class="input-item"><span class="ct-fw-600">Date of Birth:</span>
                                 <input type="date" required="" name="dob"
-                                    class="form-control input-sm input--withBorder" value="{{ $profile->dob }}">
+                                    class="form-control input-sm input--withBorder" value="{{ $profile->dob }}"
+                                    max="2002-12-31">
                             </div>
                             <div class="input-item"><span class="ct-fw-600">Spoken Language:</span>
                                 <input type="text" name="spoken_language"

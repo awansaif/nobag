@@ -77,8 +77,10 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div class="ct-article-description">
-                            {{-- <p style="height:100px; overflow:hidden;">{!! $article->body !!}</p> --}}
+                        <div class="ct-article-desscription">
+                            {{-- <p
+                                style="width:200px; height:40px;display:block;overflow:hidden;word-break: break-word; word-wrap: break-word;">
+                                {!! $article->body !!}</p> --}}
                             <a href="{{ Route('singleBlog',$article->id) }}"
                                 class="btn-primary btn-lg btn text-uppercase">read article</a>
                         </div>

@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="overflow: hidden; overflow-y:scroll;">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link">
         <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
@@ -75,18 +75,27 @@
                         <span class="text-muted">TRIPS</span>
                         <li class="nav-item">
                             {{-- active --}}
-                            <a href="{{ Route('admin.articles.index') }}"
-                                class="nav-link {{ Route::currentRouteName() == 'admin.articles.index' ? 'active' : ''  }}">
+                            <a href="{{ Route('admin.trips.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.trips.index' ? 'active' : ''  }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Articles</p>
+                                <p>Trips</p>
+                            </a>
+                        </li>
+                        <span class="text-muted">Tutorials</span>
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ Route('admin.tutorials.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.tutorials.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tutorial</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             {{-- active --}}
-                            <a href="{{ Route('admin.article-categories.index') }}"
-                                class="nav-link {{ Route::currentRouteName() == 'admin.article-categories.index' ? 'active' : ''  }}">
+                            <a href="{{ Route('admin.regulations.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.regulations.index' ? 'active' : ''  }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Category</p>
+                                <p>Regulations</p>
                             </a>
                         </li>
                         <span class="text-muted">PUBLIC</span>

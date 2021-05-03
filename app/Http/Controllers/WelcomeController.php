@@ -13,7 +13,9 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view('welcome', [
+            'trips' => Trip::orderBy('id', 'DESC')->take(4)->get(),
+        ]);
     }
 
     public function blogs()

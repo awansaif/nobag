@@ -67,7 +67,7 @@
                         <td>
                             {{ $tourist->profile?  $tourist->profile->country : '' }}
                         </td>
-                        <td>0</td>
+                        <td>{{ $tourist->trips_count }}</td>
                         <td>{{ date('Y F, Y, H:m', strtotime($tourist->email_verified_at)) }}</td>
                         <td>
                             <a href="{{ Route('admin.tourist-status',$tourist->id) }}"

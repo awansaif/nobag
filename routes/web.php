@@ -6,8 +6,11 @@ use App\Http\Controllers\Admin\SellerVerificationController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\GuideController;
+use App\Http\Controllers\Admin\RegulationController as AdminRegulationController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\TouristController;
+use App\Http\Controllers\Admin\TripController as AdminTripController;
+use App\Http\Controllers\Admin\TutorialController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BookTripController;
@@ -17,11 +20,15 @@ use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\BuyerProfileController;
 use App\Http\Controllers\EditiorController;
 use App\Http\Controllers\Guide\ImageController;
+use App\Http\Controllers\Guide\RegulationController;
+use App\Http\Controllers\Guide\TutorialController as GuideTutorialController;
 use App\Http\Controllers\Page\ContactUsController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SellerProfileController;
 use App\Http\Controllers\SiteProfileController;
+use App\Http\Controllers\Tourist\RegulationController as TouristRegulationController;
 use App\Http\Controllers\Tourist\TripController as TouristTripController;
+use App\Http\Controllers\Tourist\TutorialController as TouristTutorialController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\WelcomeController;
@@ -94,6 +101,12 @@ Route::prefix('guide')
             //     [SellerBlogController::class, 'store']
             // )->name('blogStore');
 
+
+            // tutorials
+            Route::resource('tutorials', GuideTutorialController::class);
+            // document/regulation
+            Route::resource('regulations', RegulationController::class);
+
             // setting
             Route::get('setting', [SellerController::class, 'setting'])->name('setting');
             Route::post('setting', [SellerController::class, 'updatePassword'])->name('update-password');
@@ -142,13 +155,19 @@ Route::prefix('tourist')
             Route::get('profile', [BuyerProfileController::class, 'create'])->name('profileForm');
             Route::post('profile/{id}', [BuyerProfileController::class, 'store'])->name('profile');
 
-
             // Trips
+
             Route::get('my-trips', [TouristTripController::Class, 'taken_trips'])->name('takenTrips');
             Route::resource('trips', TouristTripController::class);
 
             // book trip
+            Route::get('booking-confirm', [BookTripController::class, 'confirmed'])->name('bookingConfirmed');
             Route::resource('book-trip', BookTripController::class);
+
+            // tutorials
+            Route::resource('tutorials', TouristTutorialController::class);
+            // document/regulation
+            Route::resource('regulations', TouristRegulationController::class);
 
             // setting
             Route::get('setting', [BuyerController::class, 'setting'])->name('setting');
@@ -205,6 +224,14 @@ Route::prefix('admin')
             Route::resource('profile', SiteProfileController::class);
             // testimonail
             Route::resource('testimonials', TestimonialController::class);
+
+            // trips
+            Route::resource('trips', AdminTripController::class);
+
+            //tutorial
+            Route::resource('tutorials', TutorialController::class);
+            // document/regulation
+            Route::resource('regulations', AdminRegulationController::class);
 
             // logout
             Route::get('logout', [AdminController::class, 'logout'])->name('logout');

@@ -50,32 +50,31 @@
                             </div>
                         </form>
                     </div>
-                    <div class="text-left">
+                    {{-- <div class="text-left">
                         <a href="{{ Route('tourist.forgetPassword') }}"
-                            class="text-capitalize ct-u-colorMotive ct-fw-700">Forgot your
-                            password?</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5 text-center">
-                <div class="ct-textBox ct-u-backgroundGrey">
-                    <h6 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom30">Why Create An Account?
-                    </h6>
-                    <ul class="list-inline list-unstyled ct-u-marginBottom40 text-left ct-list--moreSpace">
-                        <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Book tours and vacations quickly and
-                            easily</li>
-                        <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Save itineraries, review reservations
-                        </li>
-                        <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Sign up for weekly unique,
-                            subscriber-only savings</li>
-                        <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Earn travel credits by referring
-                            friends & family</li>
-                    </ul><a href="{{ Route('tourist.registerForm') }}"
-                        class="btn btn-primary btn-lg text-uppercase">Create
-                        Account</a>
-                </div>
+                    class="text-capitalize ct-u-colorMotive ct-fw-700">Forgot your
+                    password?</a>
+                </div> --}}
             </div>
         </div>
+        <div class="col-md-5 text-center">
+            <div class="ct-textBox ct-u-backgroundGrey">
+                <h6 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom30">Why Create An Account?
+                </h6>
+                <ul class="list-inline list-unstyled ct-u-marginBottom40 text-left ct-list--moreSpace">
+                    <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Book tours and vacations quickly and
+                        easily</li>
+                    <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Save itineraries, review reservations
+                    </li>
+                    <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Sign up for weekly unique,
+                        subscriber-only savings</li>
+                    <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Earn travel credits by referring
+                        friends & family</li>
+                </ul><a href="{{ Route('tourist.registerForm') }}" class="btn btn-primary btn-lg text-uppercase">Create
+                    Account</a>
+            </div>
+        </div>
+    </div>
     </div>
 </section>
 
