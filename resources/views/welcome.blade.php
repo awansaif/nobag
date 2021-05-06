@@ -94,6 +94,40 @@
         </div>
     </div>
 </section>
+<section class="ct-u-paddingBottom50">
+    <div class="container">
+        <h2 class="text-center ct-u-marginTop70 text-primary">SEARCH HERE</h2>
+        <div class="row">
+            <form class="ct-form ct-u-marginTop40" action="{{ Route('search')  }}" method="POST">
+                @csrf
+                <div class="col-md-4">
+                    <div class="">
+                        <span class="ct-fw-600">TOUR NAME:</span>
+                        <input type="text" name="name" class="form-control input-sm input--withBorder"
+                            value="{{ old('name') }}" placeholder="TOUR NAME">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="">
+                        <span class="ct-fw-600">PRICE:</span>
+                        <input type="text" name="price" class="form-control input-sm input--withBorder"
+                            value="{{ old('price') }}" placeholder="PRICE">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="">
+                        <span class="ct-fw-600">DATE:</span>
+                        <input type="text" name="date" class="form-control input-sm input--withBorder"
+                            value="{{ old('date') }}" placeholder="DATE">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">SEARCH</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 
 <section>
     <div style="position: relative;">
@@ -116,10 +150,10 @@
 </section>
 
 
-<section class="ct-u-paddingBottom250">
+<section class="">
     <div class="container">
         <div class="row">
-            <div class="ct-heading--striped text-uppercase ct-u-marginBottom50">
+            <div class="ct-heading--striped text-uppercase">
                 <h4 class="pull-left">latest destinations</h4><a href="customize-destination.html"
                     class="btn btn-default btn-xs pull-right">see all</a>
                 <div class="clearfix"></div>
@@ -553,93 +587,6 @@
     </div>
 </section>
 
-
-<section class="ct-u-decoration--triangleBefore ct-u-backgroundMotive ct-u-colorWhite">
-    <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true"
-        data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1"
-        class="ct-slick ct-js-slick">
-        <div class="item">
-            <div class="ct-slick-inner">
-                <div class="ct-slick-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h2 class="ct-u-marginBottom30">
-                                    Venice Photography Walking
-                                    Tour: A Day in the Life of
-                                    Pisa Tower
-                                </h2>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <p>Or fly non-stop from Rome by $515 USD</p>
-                                        <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
-                                        <p class="ct-fw-300">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Nunc lacinia vehicula odio vitae rhoncus. Integer
-                                            accumsan dapibus ornare. Sed maximus viverra ipsum,
-                                            quis facilisis est pretium ut.
-                                        </p>
-                                    </div>
-                                    <div class="col-md-5 ct-u-paddingBottom70">
-                                        <div class="ct-productPrice ct-productPrice--circle ct-u-colorMotive">
-                                            <span>from</span><span class="ct-u-colorMotive ct-productPrice-price"><span
-                                                    class="ct-currency">$</span>589</span><span
-                                                class="ct-u-marginBottom10">per person</span><a href="itinerary.html"
-                                                class="btn btn-primary btn-xs text-uppercase">learn more</a>
-                                        </div><img src="./assets/images/content/guide-tour/sliderImage2.png" alt=""
-                                            data-bottom="-5" data-right="-300" class="ct-js-imageOffset">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ct-slick-inner">
-                <div class="ct-slick-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h2 class="ct-u-marginBottom30">
-                                    Venice Photography Walking
-                                    Tour: A Day in the Life of
-                                    Pisa Tower
-                                </h2>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <p>Or fly non-stop from Rome by $515 USD</p>
-                                        <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
-                                        <p class="ct-fw-300">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Nunc lacinia vehicula odio vitae rhoncus. Integer
-                                            accumsan dapibus ornare. Sed maximus viverra ipsum,
-                                            quis facilisis est pretium ut.
-                                        </p>
-                                    </div>
-                                    <div class="col-md-5 ct-u-paddingBottom70">
-                                        <div class="ct-productPrice ct-productPrice--circle ct-u-colorMotive">
-                                            <span>from</span><span class="ct-u-colorMotive ct-productPrice-price"><span
-                                                    class="ct-currency">$</span>589</span><span
-                                                class="ct-u-marginBottom10">per person</span><a href="#"
-                                                class="btn btn-primary btn-xs text-uppercase">learn more</a>
-                                        </div><img src="./assets/images/content/guide-tour/sliderImage2.png" alt=""
-                                            data-bottom="-5" data-right="-300" class="ct-js-imageOffset">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="ct-u-paddingBoth80 ct-blog">
     <div class="container">
         <div class="ct-heading--withBorder ct-heading--withBorderGrey ct-u-marginBottom40">

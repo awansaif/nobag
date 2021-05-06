@@ -23,6 +23,7 @@ use App\Http\Controllers\Guide\ImageController;
 use App\Http\Controllers\Guide\RegulationController;
 use App\Http\Controllers\Guide\TutorialController as GuideTutorialController;
 use App\Http\Controllers\Page\ContactUsController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SellerProfileController;
 use App\Http\Controllers\SiteProfileController;
@@ -34,19 +35,19 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
+// public routes
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 // blogs
 Route::get('/blogs', [WelcomeController::class, 'blogs'])->name('blogs');
 Route::get('/single-blog/{id}', [WelcomeController::class, 'single_blog'])->name('singleBlog');
-
+// trip routs
 Route::get('/trips', [WelcomeController::class, 'trips'])->name('trips');
 Route::get('/single-trip/{id}', [WelcomeController::class, 'single_trip'])->name('singleTrip');
-
-
+// pages routes
 Route::get('/about-us', [WelcomeController::class, 'about_us'])->name('about-us');
-// contact us page
 Route::resource('contact-us', ContactUsController::class);
-
+// search routes
+Route::post('search', [SearchController::class, 'search'])->name('search');
 
 Route::get('/email/verify', function () {
     return view('buyer.auth.verify-email');
