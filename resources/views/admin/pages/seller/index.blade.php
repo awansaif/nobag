@@ -36,21 +36,15 @@
         <table id="datatable" class="table table-bordered table-responsive table-striped nowrap">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>User Name</th>
-                    <th>First Name</th>
+                    <th><i class="fas fa-list"></i></th>
+                    <th>Name</th>
                     <th>Surname</th>
-                    <th>Place OF Birth</th>
-                    <th>Date of Birth</th>
                     <th>Nationality</th>
-                    <th>Qualification</th>
-                    <th>Language Spken</th>
-                    <th>Phone #</th>
                     <th>Email</th>
-                    <th>Fiscal Code</th>
-                    <th>Vat Number</th>
-                    <th>IBAN</th>
                     <th>Verified</th>
+                    <th>Trips</th>
+                    {{-- <th>Sales</th> --}}
+                    {{-- <th>Review</th> --}}
                     <th>Activate/Deactivate</th>
                     <th>Edit</th>
                     <th>Remove</th>
@@ -60,19 +54,10 @@
                 @forelse ($sellers as $key => $seller)
                 <tr>
                     <td>{{ $key + 1 }}</td>
-                    <td>{{ $seller->user_name }}</td>
                     <td>{{ $seller->first_name }}</td>
                     <td>{{ $seller->surname }}</td>
-                    <td>{{ $seller->pob }}</td>
-                    <td>{{ $seller->dob }}</td>
                     <td>{{ $seller->nationality }}</td>
-                    <td>{{ $seller->profile? $seller->profile->qualifiaction : '' }}</td>
-                    <td>{{ $seller->profile? $seller->profile->spoken_language : ''}}</td>
-                    <td>{{ $seller->phone }}</td>
                     <td>{{ $seller->email }}</td>
-                    <td>{{ $seller->fiscal_code }}</td>
-                    <td>{{ $seller->vat_number }}</td>
-                    <td>{{ $seller->iban }}</td>
                     <td>
                         @if($seller->is_verified)
                         verified
@@ -81,17 +66,27 @@
                         @endif
                     </td>
                     <td>
+                        <a href="{{ Route('admin.guideTours', $seller->id) }}" class="btn btn-success">Trips</a>
+                    </td>
+                    {{-- <td>
+                        <a href="#" class="btn btn-success">Sales</a>
+                    </td> --}}
+                    {{-- <td>
+                        <a href="#" class="btn btn-success">Review</a>
+                    </td> --}}
+                    <td>
                         <a href="{{ Route('admin.guide-status',$seller->id) }}"
                             class="btn btn-primary">{{ $seller->is_active? 'Active': 'Deactivate' }}</a>
                     </td>
                     <td>
-                        <a href="{{ Route('admin.guides.edit',$seller->id) }}" class="btn btn-success">Edit</a>
+                        <a href="{{ Route('admin.guides.edit', $seller->id) }}" class="btn btn-success">Edit</a>
                     </td>
                     <td>
                         <form action="{{ Route('admin.guides.destroy',$seller->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger">Remove</button>
+                            <button class="btn btn-danger"
+                                onclick="return confirm('Are you sure you want to delete this Guide?');">Remove</button>
                         </form>
                     </td>
                 </tr>
@@ -101,21 +96,15 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>#</th>
-                    <th>User Name</th>
-                    <th>First Name</th>
+                    <th><i class="fas fa-list"></i></th>
+                    <th>Name</th>
                     <th>Surname</th>
-                    <th>Place OF Birth</th>
-                    <th>Date of Birth</th>
                     <th>Nationality</th>
-                    <th>Qualification</th>
-                    <th>Language Spken</th>
-                    <th>Phone #</th>
                     <th>Email</th>
-                    <th>Fiscal Code</th>
-                    <th>Vat Number</th>
-                    <th>IBAN</th>
                     <th>Verified</th>
+                    <th>Trips</th>
+                    {{-- <th>Sales</th> --}}
+                    {{-- <th>Review</th> --}}
                     <th>Activate/Deactivate</th>
                     <th>Edit</th>
                     <th>Remove</th>

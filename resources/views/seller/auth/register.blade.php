@@ -34,6 +34,10 @@
                         <form class="ct-form" method="POST" action="{{ Route('guide.register') }}">
                             @csrf
                             <div class="input-group text-left">
+                                <div class="input-item"><span class="ct-fw-600">User Name:</span>
+                                    <input type="text" required="" name="user_name"
+                                        class="form-control input-sm input--withBorder" value="{{ old('user_name') }}">
+                                </div>
                                 <div class="input-item"><span class="ct-fw-600">first Name:</span>
                                     <input type="text" required="" name="first_name"
                                         class="form-control input-sm input--withBorder" value="{{ old('first_name') }}">
@@ -81,11 +85,29 @@
                                     <input type="tel" required="" name="iban"
                                         class="form-control input-sm input--withBorder" value="{{ old('iban') }}">
                                 </div>
+                                <div class="input-item">
+                                    <span class="ct-fw-600">Password:
+                                    </span>
+                                    <input type="password" required="" name="password"
+                                        class="form-control input-sm input--withBorder">
+                                </div>
+                                <div class="input-item">
+                                    <span class="ct-fw-600">Rules:
+                                    </span>
+                                    <p class="color: #202020;">Password must be greater then 8.</p>
+                                    <p class="color: #202020;">Password must contain aphla-numeric and special
+                                        character.</p>
+                                </div>
                                 <div style="display: flex; justify-content:start; height:20px; align-items: center;">
                                     <input type="checkbox" name="rule" id="rule" required checked
                                         class="input-sm input--withBorder">
                                     <label for="" style="margin-left: 10px; margin-top:4px;">
-                                        acceptance of the regulations and rules of use
+                                        By selecting <b>Agree and continue</b> below, I agree to noBag's
+                                        <a href="#" class="text-primary">Terms of
+                                            Service </a>,
+                                        <a href="#" class="text-primary">Payments Terms of Service
+                                        </a>,
+                                        <a href="#" class="text-primary">Privacy Policy </a>
                                     </label>
                                 </div>
 

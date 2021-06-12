@@ -38,7 +38,7 @@
         <table id="datatable" class="table table-bordered  table-striped nowrap">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th><i class="fas fa-list"></i></th>
                     <th>Category</th>
                     <th>No. Articles</th>
                     <th>Edit</th>
@@ -60,7 +60,7 @@
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger"
-                                onclick="return conifrm('Are you sure to delete category');">Remove</button>
+                                onclick="return confirm('Are you sure you want to delete this category?');">Remove</button>
                         </form>
                     </td>
                 </tr>
@@ -70,7 +70,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>#</th>
+                    <th><i class="fas fa-list"></i></th>
                     <th>Category</th>
                     <th>No. Articles</th>
                     <th>Edit</th>

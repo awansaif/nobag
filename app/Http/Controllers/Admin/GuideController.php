@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Mail\SellerVerified;
 use App\Models\Seller;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -185,5 +186,15 @@ class GuideController extends Controller
         }
         $seller->save();
         return back();
+    }
+
+
+    public function trips($id)
+    {
+        return view('admin.pages.trip.index', [
+            'trips' => Trip::with('guide')->where('seller_id', $id)
+                ->orderBy('id', 'DESC')
+                ->get()
+        ]);
     }
 }

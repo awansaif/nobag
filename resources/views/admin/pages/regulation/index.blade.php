@@ -35,41 +35,55 @@
             {{ Session::get('message') }}
         </div>
         @endif
-        <div class="row">
-            @forelse ($regulations as $regulation)
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="text-primary">{{ $regulation->title }}</h5>
-                        <ul>
-                            <li>For: <span class="text-primary">{{ $regulation->role }}</span></li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <a href="{{ asset($regulation->document) }}" class="btn btn-primary"
-                                    download>Download</a>
-                            </div>
-                            <div class="col-sm-4">
-                                <a href="{{ Route('admin.regulations.show',$regulation->id) }}"
-                                    class="btn btn-success">Show</a>
-                            </div>
-                            <div class="col-sm-4">
-                                <form action="{{ Route('admin.regulations.destroy',$regulation->id) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-danger float-right">Remove</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @empty
+        <table id="datatable" class="table table-bordered  table-striped nowrap">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-list"></i></th>
+                    <th>Title</th>
+                    <th>For Role</th>
+                    <th>Download</th>
+                    <th>Show</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($regulations as $key => $regulation)
+                <tr>
+                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $regulation->title }}</td>
+                    <td>
+                        {{ $regulation->role }}
+                    </td>
+                    <td>
+                        <a href="{{ asset($regulation->document) }}" class="btn btn-primary" download>Download</a>
+                    </td>
+                    <td>
+                        <a href="{{ Route('admin.regulations.show',$regulation->id) }}" class="btn btn-success">Show</a>
+                    </td>
+                    <td>
+                        <form action="{{ Route('admin.regulations.destroy',$regulation->id) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger float-right"
+                                onclick="return confirm('Are you sure you want to delete this regulation?');">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                @empty
 
-            @endforelse
-        </div>
+                @endforelse
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th><i class="fas fa-list"></i></th>
+                    <th>Title</th>
+                    <th>For Role</th>
+                    <th>Download</th>
+                    <th>Show</th>
+                    <th>Remove</th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
     </div><!-- /.container-fluid -->
 </section>

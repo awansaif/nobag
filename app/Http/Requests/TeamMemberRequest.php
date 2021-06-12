@@ -25,7 +25,8 @@ class TeamMemberRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'image' => ['required', 'image'],
+            'description' => ['required'],
+            'image' => ['nullable', 'image'],
             'position' => ['required']
         ];
     }

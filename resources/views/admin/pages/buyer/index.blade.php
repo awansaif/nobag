@@ -39,15 +39,13 @@
             <table id="datatable" class="table table-bordered  table-striped nowrap">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>First Name</th>
+                        <th><i class="fas fa-list"></i></th>
+                        <th>Name</th>
                         <th>Sur Name</th>
-                        <th>Date of Birth</th>
                         <th>Email</th>
-                        <th>Spoken Language</th>
-                        <th>Country</th>
-                        <th>Purchased Trips</th>
+                        <th>Nationality</th>
                         <th>Verified at</th>
+                        {{-- <th>Trip</th> --}}
                         <th>Activate/Deactivate</th>
                         <th>Edit</th>
                         <th>Remove</th>
@@ -59,16 +57,14 @@
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $tourist->first_name }}</td>
                         <td>{{ $tourist->surname }}</td>
-                        <td>{{ date('Y F, Y', strtotime($tourist->dob)) }}</td>
                         <td>{{ $tourist->email }}</td>
                         <td>
-                            {{ $tourist->profile?  $tourist->profile->tongue : '' }}
+                            {{ $tourist->profile?  $tourist->profile->country : 'null' }}
                         </td>
-                        <td>
-                            {{ $tourist->profile?  $tourist->profile->country : '' }}
-                        </td>
-                        <td>{{ $tourist->trips_count }}</td>
                         <td>{{ date('Y F, Y, H:m', strtotime($tourist->email_verified_at)) }}</td>
+                        {{-- <td>
+                            <a href="#" class="btn btn-success">Trip</a>
+                        </td> --}}
                         <td>
                             <a href="{{ Route('admin.tourist-status',$tourist->id) }}"
                                 class="btn btn-primary">{{ $tourist->is_active? 'Active': 'Deactivate' }}</a>
@@ -80,7 +76,8 @@
                             <form action="{{ Route('admin.tourists.destroy',$tourist->id) }}" method="post">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-danger">Remove</button>
+                                <button class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this Tourist?');">Remove</button>
                             </form>
                         </td>
                     </tr>
@@ -90,15 +87,13 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>#</th>
-                        <th>First Name</th>
+                        <th><i class="fas fa-list"></i></th>
+                        <th>Name</th>
                         <th>Sur Name</th>
-                        <th>Date of Birth</th>
                         <th>Email</th>
-                        <th>Spoken Language</th>
-                        <th>Country</th>
-                        <th>Purchased Trips</th>
+                        <th>Nationality</th>
                         <th>Verified at</th>
+                        {{-- <th>Trip</th> --}}
                         <th>Activate/Deactivate</th>
                         <th>Edit</th>
                         <th>Remove</th>

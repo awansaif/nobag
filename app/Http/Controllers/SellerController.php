@@ -39,6 +39,7 @@ class SellerController extends Controller
     public function register(Request $request)
     {
         $request->validate([
+            'user_name' => 'required|unique:sellers,user_name',
             'first_name' => 'required',
             'surname'   => 'required',
             'pob'       => 'required',
@@ -49,6 +50,7 @@ class SellerController extends Controller
             'fiscal_code' => 'required',
             'vat_number'   => 'required',
             'iban'         => 'required',
+            'password'     => 'required|min:8',
             'rule'         => 'required',
         ], [], [
             'pob' => 'place of birth',
@@ -56,6 +58,7 @@ class SellerController extends Controller
         ]);
 
         Seller::Create([
+            'user_name' => $request->user_name,
             'first_name' => $request->first_name,
             'surname' => $request->surname,
             'pob' => $request->pob,
@@ -65,7 +68,8 @@ class SellerController extends Controller
             'email' => $request->email,
             'fiscal_code' => $request->fiscal_code,
             'vat_number' => $request->vat_number,
-            'iban' => $request->iban
+            'iban' => $request->iban,
+            'password' => Hash::make($request->password)
         ]);
 
         $request->session()->flash('message', 'Verification required: After verification you recive email with credientials, Thanks');

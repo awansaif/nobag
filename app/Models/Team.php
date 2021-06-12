@@ -13,6 +13,7 @@ class Team extends Model
     protected $fillable = [
         'image',
         'name',
+        'description',
         'position',
     ];
 }

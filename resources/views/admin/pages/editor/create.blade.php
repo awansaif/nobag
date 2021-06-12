@@ -29,35 +29,84 @@
         @endif
         <form method="POST" action="{{ Route('admin.editor.store') }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label for="name">First Name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                    placeholder="firstname" value="{{ old('name') }}" required onfocus>
-                @error('name')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Username</label>
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" name="username"
+                            placeholder="User name" value="{{ old('username') }}" required onfocus>
+                        @error('username')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Password</label>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            name="password" placeholder="***********" value="{{ old('password') }}" required onfocus>
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Surname</label>
-                <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname"
-                    placeholder="surname" value="{{ old('surname') }}" required onfocus>
-                @error('surname')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">First Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                            placeholder="firstname" value="{{ old('name') }}" required onfocus>
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">First Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                            placeholder="firstname" value="{{ old('name') }}" required onfocus>
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Phone</label>
-                <input type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone"
-                    placeholder="Phone Number" value="{{ old('phone') }}" required onfocus>
-                @error('phone')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Surname</label>
+                        <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname"
+                            placeholder="surname" value="{{ old('surname') }}" required onfocus>
+                        @error('surname')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Phone</label>
+                        <input type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone"
+                            placeholder="Phone Number" value="{{ old('phone') }}" required onfocus>
+                        @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>

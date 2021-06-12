@@ -18,7 +18,10 @@ class AddEditorController extends Controller
     public function index()
     {
         return view('admin.pages.editor.index', [
-            'editors' => Editior::orderBy('id', 'DESC')->get()
+            'editors' => Editior::select('id', 'first_name', 'surname', 'email')
+                ->where('is_active', 1)
+                ->orderBy('id', 'DESC')
+                ->get()
         ]);
     }
 
@@ -41,6 +44,8 @@ class AddEditorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'username' => 'required|unique:editiors,username',
+            'password' => 'required|min:6',
             'name' => 'required',
             'surname' => 'required',
             'email'   => 'required|unique:editiors,email',
@@ -48,9 +53,9 @@ class AddEditorController extends Controller
         ]);
         $password = $request->surname[0] . uniqid();
         Editior::create([
-            'username' => $request->name[0] . uniqid(),
-            'password' => Hash::make($password),
-            'visible_password' => $password,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'visible_password' => $request->password,
             'first_name' => $request->name,
             'surname'    => $request->surname,
             'email'    => $request->email,

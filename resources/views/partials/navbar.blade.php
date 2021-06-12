@@ -20,7 +20,8 @@
 <div id="ct-js-wrapper" class="ct-pageWrapper">
     <div class="ct-navbarMobile">
         <a href="{{ route('welcome') }}" class="navbar-brand">
-            <img src="./assets/images/content/guide-tour/logo.png" alt="Mobile Logo">
+            <h2>NOBAG</h2>
+            {{-- <img src="./assets/images/content/guide-tour/logo.png" alt="Mobile Logo"> --}}
         </a>
         <button type="button" class="navbar-toggle">
             <span class="sr-only">Toggle Navigation</span>
@@ -84,7 +85,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a href="{{ route('welcome') }}">
-                    <img src="{{ asset('assets/images/content/guide-tour/logo.png') }}" alt="logo">
+                    <h2 style="margin-top: 25px;">NOBAG</h2>
+                    {{-- <img src="{{ asset('assets/images/content/guide-tour/logo.png') }}" alt="logo"> --}}
                 </a>
             </div>
             <ul class="nav navbar-nav ct-navbar--fadeInUp pull-right">

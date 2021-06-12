@@ -70,7 +70,12 @@
                                     <input type="checkbox" name="rule" id="rule" required checked
                                         class="input-sm input--withBorder">
                                     <label for="" style="margin-left: 10px; margin-top:4px;">
-                                        acceptance of the regulations and rules of use
+                                        By selecting <b>Agree and continue</b> below, I agree to noBag's
+                                        <a href="#" class="text-primary">Terms of
+                                            Service </a>,
+                                        <a href="#" class="text-primary">Payments Terms of Service
+                                        </a>,
+                                        <a href="#" class="text-primary">Privacy Policy </a>
                                     </label>
                                 </div>
 

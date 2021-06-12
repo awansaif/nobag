@@ -45,6 +45,17 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="name">Description:</label>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                            id="description">{{ $member->description }}
+                        </textarea>
+                        @error('description')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="name">Image</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
                             value="{{ old('image') }}" accept="image/*">
@@ -76,4 +87,14 @@
     </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+@endsection
+
+@section('scripts')
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#description' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection

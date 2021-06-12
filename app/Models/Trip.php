@@ -35,4 +35,9 @@ class Trip extends Model
     {
         return $this->hasMany(TripTag::class);
     }
+
+    public function guide()
+    {
+        return $this->belongsTo(Seller::class, 'seller_id');
+    }
 }

@@ -16,7 +16,9 @@ class TripController extends Controller
     public function index()
     {
         return view('admin.pages.trip.index', [
-            'trips' => Trip::orderBy('id', 'DESC')->get()
+            'trips' => Trip::with('guide')
+                ->orderBy('id', 'DESC')
+                ->get()
         ]);
     }
 

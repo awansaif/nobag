@@ -50,7 +50,8 @@
                         <form action="{{ Route('admin.testimonials.destroy',$testimonial->id) }}" method="post">
                             @method('DELETE')
                             @csrf
-                            <button class="btn btn-danger btn-sm float-left">Remove</button>
+                            <button class="btn btn-danger btn-sm float-left"
+                                onclick="return confirm('Are you sure you want to delete this testimonial?');">Remove</button>
                         </form>
                     </div>
                 </div>
@@ -74,4 +75,3 @@
     });
 </script>
 @endsection
-

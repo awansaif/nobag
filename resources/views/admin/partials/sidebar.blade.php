@@ -138,10 +138,20 @@
                                 <p>Team</p>
                             </a>
                         </li>
+                        <span class="text-muted">Pages</span>
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ Route('admin.team.index') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'admin.team.index' ? 'active' : ''  }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Team</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column" style="position: relative; bottom:10px;">
+                <span class="text-muted">Other</span>
                 <li class="nav-item mt-auto">
                     {{-- active --}}
                     <a href="{{ Route('admin.logout') }}" class="nav-link">

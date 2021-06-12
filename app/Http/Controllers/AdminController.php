@@ -31,7 +31,7 @@ class AdminController extends Controller
             return redirect()->route('admin.dashboard');
         } else {
             $request->session()->flash('error', 'Password Incorrect: Please Try Again.');
-            return back();
+            return back()->withInput(['email' => $request->email]);
         }
     }
 

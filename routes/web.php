@@ -207,6 +207,8 @@ Route::prefix('admin')
 
 
             // guides ud
+            Route::get('guide-trips/{id}', [GuideController::class, 'trips'])->name('guideTours');
+            Route::get('guide-sale/{id}', [GuideController::class, 'sales'])->name('guideSales');
             Route::get('guide-status/{id}', [GuideController::class, 'active'])->name('guide-status');
             Route::get('selller/verify/{id}', [SellerVerificationController::class, 'verification'])->name('sellerVerification');
             Route::resource('guides', GuideController::class);

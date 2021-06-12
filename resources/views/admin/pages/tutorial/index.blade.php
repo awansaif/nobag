@@ -35,42 +35,58 @@
             {{ Session::get('message') }}
         </div>
         @endif
-        <div class="row">
-            @forelse ($tutorials as $tutorial)
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-head">
-                        <div style="width:100%; height:200px; overflow:hidden;">
+        <table id="datatable" class="table table-bordered  table-striped nowrap">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-list"></i></th>
+                    <th>Tutorial</th>
+                    <th>Title</th>
+                    <th>For Role</th>
+                    <th>Read More</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($tutorials as $key => $tutorial)
+                <tr>
+                    <td>{{ $key + 1 }}</td>
+                    <td>
+                        <div style="width:200px; height:200px; overflow:hidden;">
                             {!! $tutorial->tutorial !!}
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="text-primary">{{ $tutorial->title }}</h5>
-                        <ul>
-                            <li>For: <span class="text-primary">{{ $tutorial->role }}</span></li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <a href="{{ Route('admin.tutorials.show',$tutorial->id) }}" class="btn btn-primary">Read
-                                    More</a>
-                            </div>
-                            <div class="col-sm-6">
-                                <form action="{{ Route('admin.tutorials.destroy',$tutorial->id) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-danger float-right">Remove</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @empty
+                    </td>
+                    <td>{{ $tutorial->title }}</td>
+                    <td>
+                        {{ $tutorial->role }}
+                    </td>
+                    <td>
+                        <a href="{{ Route('admin.tutorials.show',$tutorial->id) }}" class="btn btn-primary">Read
+                            More</a>
+                    </td>
+                    <td>
+                        <form action="{{ Route('admin.tutorials.destroy',$tutorial->id) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger float-right"
+                                onclick="return confirm('Are you sure you want to delete this tutorial?');">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                @empty
 
-            @endforelse
-        </div>
+                @endforelse
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th><i class="fas fa-list"></i></th>
+                    <th>Tutorial</th>
+                    <th>Title</th>
+                    <th>For Role</th>
+                    <th>Read More</th>
+                    <th>Remove</th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
     </div><!-- /.container-fluid -->
 </section>

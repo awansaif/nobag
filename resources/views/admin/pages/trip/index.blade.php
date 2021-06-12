@@ -27,42 +27,63 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <br>
         @if(Session::has('message'))
         <div class="alert alert-success">
             {{ Session::get('message') }}
         </div>
         @endif
-        <div class="row">
-            @forelse ($trips as $trip)
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-head">
+        <table id="datatable" class="table table-bordered  table-striped nowrap">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-list"></i></th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Total Seats</th>
+                    <th>Available Seats</th>
+                    <th>Closing date</th>
+                    <th>Guide</th>
+                    <th>Read More</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($trips as $key => $trip)
+                <tr>
+                    <td>{{ $key + 1 }}</td>
+                    <td>
                         @foreach (json_decode($trip->photos) as $item)
                         @if ($loop->first)
-                        <img src="{{ asset($item) }}" alt="" class="card-img" width="100%" height="220px">
+                        <img src="{{ asset($item) }}" alt="" class="card-img" width="100" height="100px">
                         @endif
                         @endforeach
-                    </div>
-                    <div class="card-body">
-                        <h5 class="text-primary">{{ $trip->event_title }}</h5>
-                        <ul>
-                            <li>Total Seats: <span class="text-primary">{{ $trip->max_seats }}</span></li>
-                            <li>Min Seats: <span class="text-primary">{{ $trip->min_seats }}</span></li>
-                            <li>Available: <span class="text-primary">{{ $trip->available_places }}</span></li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
+                    </td>
+                    <td>{{ $trip->event_title }}</td>
+                    <td>
+                        {{ $trip->max_seats }}
+                    </td>
+                    <td>{{ $trip->available_places }}</td>
+                    <td>{{ date('d/m/Y', strtotime($trip->closing_date_of_the_sale)) }}</td>
+                    <td>{{ $trip->guide->first_name }}</td>
+                    <td>
                         <a href="{{ Route('singleTrip',$trip->id) }}" target="__blank" class="btn btn-primary">Read
                             More</a>
-                    </div>
-                </div>
-            </div>
-            @empty
+                    </td>
+                </tr>
+                @empty
 
-            @endforelse
-        </div>
-    </div>
+                @endforelse
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th><i class="fas fa-list"></i></th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Total Seats</th>
+                    <th>Available Seats</th>
+                    <th>Closing date</th>
+                    <th>Guide</th>
+                </tr>
+            </tfoot>
+        </table>
     </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->

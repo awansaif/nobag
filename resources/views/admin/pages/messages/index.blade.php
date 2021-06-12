@@ -52,7 +52,8 @@
                     </td>
                     <td>{{ $message->message }}</td>
                     <td>
-                        <a href="{{ Route('admin.deletemessage',$message->id) }}" class="btn btn-danger">Remove</a>
+                        <a href="{{ Route('admin.deletemessage',$message->id) }}" class="btn btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this message?');">Remove</a>
                     </td>
                 </tr>
                 @empty

@@ -20,6 +20,11 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
+        @if(Session::has('error'))
+        <div class="alert alert-danger">
+            {{ Session::get('error') }}
+        </div>
+        @endif
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <a href="{{ route('welcome') }}" class="h1"><b>Admin</b></a>

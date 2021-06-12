@@ -37,12 +37,9 @@
             <table id="datatable" class="table table-bordered  table-striped nowrap">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>User Name</th>
-                        <th>Password</th>
-                        <th>First Name</th>
+                        <th><i class="fas fa-list"></i></th>
+                        <th>Name</th>
                         <th>Surname</th>
-                        <th>Phone #</th>
                         <th>Email</th>
                         <th>Activate/Deactivate</th>
                         <th>Edit</th>
@@ -53,11 +50,8 @@
                     @forelse ($editors as $key => $editor)
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $editor->username }}</td>
-                        <td>{{ $editor->visible_password }}</td>
                         <td>{{ $editor->first_name }}</td>
                         <td>{{ $editor->surname }}</td>
-                        <td>{{ $editor->phone }}</td>
                         <td>{{ $editor->email }}</td>
                         <td>
                             <a href="{{ Route('admin.editor-status',$editor->id) }}"
@@ -70,7 +64,8 @@
                             <form action="{{ Route('admin.editor.destroy',$editor->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger">Remove</button>
+                                <button class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this editor?');">Remove</button>
                             </form>
                         </td>
                     </tr>
@@ -80,12 +75,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>#</th>
-                        <th>User Name</th>
-                        <th>Password</th>
-                        <th>First Name</th>
+                        <th><i class="fas fa-list"></i></th>
+                        <th>Name</th>
                         <th>Surname</th>
-                        <th>Phone #</th>
                         <th>Email</th>
                         <th>Activate/Deactivate</th>
                         <th>Edit</th>

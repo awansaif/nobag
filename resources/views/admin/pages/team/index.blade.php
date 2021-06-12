@@ -37,7 +37,7 @@
         <table id="datatable" class="table table-bordered  table-striped nowrap">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th><i class="fas fa-list"></i></th>
                     <th>Image</th>
                     <th>Name</th>
                     <th>Position</th>
@@ -71,7 +71,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>#</th>
+                    <th><i class="fas fa-list"></i></th>
                     <th>Image</th>
                     <th>Name</th>
                     <th>Position</th>
